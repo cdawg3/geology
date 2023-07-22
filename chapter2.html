@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #001e4d;
+        /* background: #9E1B32; */
+      }
+
+      .app {
+        background: #fff;
+        width: 90%;
+        max-width: 600px;
+        margin: 100px auto 0;
+        border-radius: 10px;
+        padding: 30px;
+      }
+
+      .app h1 {
+        font-size: 25px;
+        color: #001e4d;
+        /* color: #222; */
+        font-weight: 600;
+        border-bottom: 1px solid #333;
+        padding-bottom: 30px;
+      }
+
+      .quiz {
+        padding: 20px 0;
+      }
+
+      .quiz h2 {
+        font-size: 18px;
+        color: #001e4d;
+        /* color: #222; */
+        font-weight: 600;
+      }
+
+      .btn {
+        background: #fff;
+        color: #222;
+        font-weight: 500;
+        width: 100%;
+        border: 1px solid #222;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: left;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover:not([disabled]) {
+        background: #001e4d;
+        /* background: #9E1B32; */
+        color: #fff;
+      }
+
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      #next-btn {
+        background: #001e4d;
+        /* background: #9E1B32; */
+        color: #fff;
+        font-weight: 500;
+        width: 150px;
+        border: 0;
+        padding: 10px;
+        margin: 20px auto 0;
+        border-radius: 5px;
+        cursor: pointer;
+        display: none;
+      }
+
+      .correct {
+        background: #9aeabc;
+      }
+
+      .incorrect {
+        background: #ff9393;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <h1>Chapter 1</h1>
+      <div class="quiz">
+        <h2 id="question">Question goes here</h2>
+        <div id="answer-buttons">
+          <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+          <button class="btn">Answer 4</button>
+        </div>
+        <button id="next-btn">Next</button>
+      </div>
+    </div>
+
+    <script>
+      //   const questions = [
+      //       {
+      //           question: 'Which is largest animal in the world?',
+      //           answers: [
+      //               { text: 'Elephant', correct: false },
+      //               { text: 'Blue Whale', correct: true },
+      //               { text: 'Giraffe', correct: false },
+      //               { text: 'Lion', correct: false }
+      //           ]
+      //       },
+      //       {
+      //           question: 'Which is smallest continent in the world?',
+      //           answers: [
+      //               { text: 'Asia', correct: false },
+      //               { text: 'Africa', correct: false },
+      //               { text: 'Australia', correct: true },
+      //               { text: 'Europe', correct: false }
+      //           ]
+      //       }
+      //   ];
+
+      const questions = [
+        {
+          question:
+            "Plate “Tectonics”, from the Greek word “Tekton”, means that:",
+          answers: [
+            {
+              text: "plate movements “build” regional geologic features",
+              correct: false,
+            },
+            {
+              text: "plate tectonics is responsible for most of the features of our planet",
+              correct: false,
+            },
+            {
+              text: "plate boundaries can only construct, but not destroy, geologic features",
+              correct: false,
+            },
+            { text: "both a and b", correct: true },
+          ],
+        },
+        {
+          question:
+            "Earth’s crust (or the Earth’s lithosphere) is broken into how many rigid plates that have various sizes and can move?",
+          answers: [
+            { text: "~ 10", correct: false },
+            { text: "~ 20", correct: true },
+            { text: "~ 50", correct: false },
+            { text: "~ 100", correct: false },
+          ],
+        },
+        {
+          question: "Who proposed first the Continental Drift Hypothesis?",
+          answers: [
+            { text: "Alfred Wagener", correct: true },
+            { text: "Harry Hess", correct: false },
+            { text: "James Hutton", correct: false },
+            { text: "Charles Darwin", correct: false },
+          ],
+        },
+        {
+          question:
+            "According the continental drift hypothesis, continents had once been joined together to form a single huge supercontinent called:",
+          answers: [
+            { text: "Rodinia", correct: false },
+            { text: "Pannotia", correct: false },
+            { text: "Pangaea", correct: true },
+            { text: "Caledonian", correct: false },
+          ],
+        },
+        {
+          question:
+            "Since Pangaea, the continents have drifted to their current location and then stopped drifting.",
+          answers: [
+            { text: "True", correct: false },
+            { text: "False", correct: true },
+          ],
+        },
+        {
+          question: "What is Wegener’s evidence for continental drift?",
+          answers: [
+            {
+              text: "The correlation of coastlines and rock assemblages now on the opposite sides of the ocean",
+              correct: false,
+            },
+            {
+              text: "The distribution of late Paleozoic glaciers, climate belts, and fossil species",
+              correct: false,
+            },
+            { text: "Paleo-magnetism", correct: false },
+            { text: "All of the above", correct: false },
+            { text: "Both a and b", correct: true },
+          ],
+        },
+        {
+          question:
+            "Rocks retain a record of the Earth’s magnetic field. This record is called:",
+          answers: [
+            { text: "paleo-magnetism", correct: true },
+            { text: "magnetic record", correct: false },
+            { text: "magnetic paleopole", correct: false },
+            { text: "magnetic declination", correct: false },
+          ],
+        },
+        {
+          question:
+            "What is the formation time of the magnetic field recorded by rocks?",
+          answers: [
+            { text: "The time of observation", correct: false },
+            {
+              text: "The time when the original magnetic field of the Earth formed",
+              correct: false,
+            },
+            {
+              text: "The time when the rock was in its original lava form",
+              correct: false,
+            },
+            { text: "The time when the rock formed", correct: true },
+          ],
+        },
+        {
+          question: "Paleomagnetism provides evidence for continental drift.",
+          answers: [
+            { text: "True", correct: true },
+            { text: "False", correct: false },
+          ],
+        },
+        {
+          question:
+            "The line that shows the successive positions of paleopoles in the past is called:",
+          answers: [
+            { text: "paleopole line", correct: false },
+            { text: "apparent polar-wander path", correct: true },
+            { text: "polar shift line", correct: false },
+            { text: "paleopole path", correct: false },
+          ],
+        },
+        {
+          question:
+            "The Mid-Ocean Ridge is a submarine mountain belt that forms along which plate boundary?",
+          answers: [
+            { text: "a convergent continental plate boundary", correct: false },
+            { text: "a convergent oceanic plate boundary", correct: false },
+            { text: "a divergent oceanic plate boundary", correct: true },
+            { text: "a stable oceanic plate boundary", correct: false },
+          ],
+        },
+        {
+          question: "Who is the discoverer of sea-floor spreading?",
+          answers: [
+            { text: "Alfred Wagener", correct: false },
+            { text: "Harry Hess", correct: true },
+            { text: "James Hutton", correct: false },
+            { text: "Charles Darwin", correct: false },
+          ],
+        },
+        {
+          question:
+            "What are the evidences used by Harry Hess to support the hypothesis of sea-floor spreading?",
+          answers: [
+            { text: "New rock near the ridge", correct: false },
+            { text: "Oldest rock near the ridge", correct: false },
+            { text: "Oldest rock farther away", correct: false },
+            { text: "Both a and c", correct: true },
+          ],
+        },
+        {
+          question:
+            "Which of the following properties are right for plate boundaries?",
+          answers: [
+            {
+              text: "When a plate moves, its internal area remains relatively rigid and intact",
+              correct: false,
+            },
+            {
+              text: "Rock along plate boundaries can undergoes intense deformation",
+              correct: false,
+            },
+            {
+              text: "Continent forms part of the plate, so that the continent moves with the plate",
+              correct: false,
+            },
+            { text: "All of the above", correct: true },
+            { text: "Both a and c", correct: false },
+          ],
+        },
+        {
+          question:
+            "Which of the following statements are right for the location of plate boundaries?",
+          answers: [
+            {
+              text: "The earthquake belts may define the position of plate boundaries",
+              correct: false,
+            },
+            {
+              text: "Most volcanoes occur along plate boundaries",
+              correct: false,
+            },
+            {
+              text: "The earthquake belts cannot define the position of plate boundaries, since most earthquakes occur in cratons",
+              correct: false,
+            },
+            { text: "Both b and c", correct: false },
+            { text: "Both a and b", correct: true },
+          ],
+        },
+        {
+          question:
+            "Based on the relative motion of the two plates across the boundary, plate boundaries can be classified to which three types?",
+          answers: [
+            {
+              text: "conservative, destructive, and transform boundaries",
+              correct: false,
+            },
+            {
+              text: "divergent, convergent, and slide boundaries",
+              correct: false,
+            },
+            {
+              text: "divergent, convergent, and transform boundaries",
+              correct: true,
+            },
+            { text: "passive, active, and slide boundaries", correct: false },
+          ],
+        },
+        {
+          question: "Divergent plate boundary is a boundary where:",
+          answers: [
+            { text: "two plates move apart from each other", correct: true },
+            {
+              text: "two plates move toward each other (so that one plate sinks beneath the other)",
+              correct: false,
+            },
+            {
+              text: "two plates slide sideways past each other",
+              correct: false,
+            },
+            {
+              text: "two plates collide and then are sutured into a supercontinent",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "Convergent plate boundary is a boundary where:",
+          answers: [
+            { text: "two plates move apart from each other", correct: false },
+            {
+              text: "two plates move toward each other (so that one plate sinks beneath the other)",
+              correct: true,
+            },
+            {
+              text: "two plates slide sideways past each other",
+              correct: false,
+            },
+            {
+              text: "two plates collide and then are sutured into a supercontinent",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "Transform plate boundary is a boundary where:",
+          answers: [
+            { text: "two plates move apart from each other", correct: false },
+            {
+              text: "two plates move toward each other (so that one plate sinks beneath the other)",
+              correct: false,
+            },
+            {
+              text: "two plates slide sideways past each other",
+              correct: true,
+            },
+            {
+              text: "two plates collide and then are sutured into a supercontinent",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question:
+            "What representative topography can be found at divergent plate boundaries?",
+          answers: [
+            { text: "Ridge/Rift", correct: true },
+            { text: "Trench", correct: false },
+            { text: "Continental volcanic arc", correct: false },
+            { text: "Fracture zones", correct: false },
+            { text: "Both b and c", correct: false },
+          ],
+        },
+        {
+          question:
+            "What effect for lithosphere can be found due to divergent plate boundaries?",
+          answers: [
+            {
+              text: "New crust, since oceanic lithosphere created",
+              correct: true,
+            },
+            {
+              text: "Oceanic lithosphere destroyed, after one oceanic plate sank into the mantle",
+              correct: false,
+            },
+            {
+              text: "Lithosphere neither created or destroyed",
+              correct: false,
+            },
+            { text: "Continental lithosphere created", correct: false },
+            { text: "Both a and d", correct: false },
+          ],
+        },
+        {
+          question:
+            "What type of earthquakes can occur due to the divergent plate boundary?",
+          answers: [
+            { text: "Only shallow earthquakes", correct: true },
+            { text: "Only deep earthquakes", correct: false },
+            { text: "Both shallow and deep earthquakes", correct: false },
+            { text: "No earthquakes observed", correct: false },
+          ],
+        },
+        {
+          question:
+            "What representative topography can be found at convergent plate boundaries?",
+          answers: [
+            { text: "Ridge/Rift", correct: false },
+            { text: "Trench", correct: false },
+            { text: "Continental volcanic arc", correct: false },
+            {
+              text: "No major effect, except for fracture zones",
+              correct: false,
+            },
+            { text: "Both b and c", correct: true },
+          ],
+        },
+        {
+          question:
+            "What type of earthquakes can occur due to the convergent plate boundary?",
+          answers: [
+            { text: "Only shallow earthquakes", correct: false },
+            { text: "Only deep earthquakes", correct: false },
+            { text: "Only earthquakes within crust", correct: false },
+            { text: "Both shallow and deep earthquakes", correct: true },
+          ],
+        },
+        {
+          question:
+            "What effect for lithosphere can be found due to convergent plate boundaries?",
+          answers: [
+            { text: "Oceanic lithosphere created", correct: false },
+            {
+              text: "Oceanic lithosphere destroyed, after one oceanic plate sank into the mantle",
+              correct: true,
+            },
+            {
+              text: "Lithosphere neither created or destroyed",
+              correct: false,
+            },
+            { text: "Continental lithosphere created", correct: false },
+          ],
+        },
+        {
+          question: "Transform plate boundaries do not lead to volcanism.",
+          answers: [
+            { text: "True", correct: true },
+            { text: "False", correct: false },
+          ],
+        },
+        {
+          question:
+            "What representative topography can be found near transform plate boundaries?",
+          answers: [
+            { text: "Ridge/Rift", correct: false },
+            { text: "Trench", correct: false },
+            { text: "Continental volcanic arc", correct: false },
+            {
+              text: "No major effect, except for fracture zones",
+              correct: true,
+            },
+            { text: "Both b and c", correct: false },
+          ],
+        },
+        {
+          question:
+            "What effect for lithosphere can be found due to transform plate boundaries?",
+          answers: [
+            { text: "Oceanic lithosphere created", correct: false },
+            { text: "Oceanic lithosphere destroyed", correct: false },
+            {
+              text: "Lithosphere neither created nor destroyed",
+              correct: true,
+            },
+            { text: "Continental lithosphere created", correct: false },
+          ],
+        },
+        {
+          question:
+            "The place where three plate boundaries intersect is called:",
+          answers: [
+            { text: "a triple junction", correct: true },
+            { text: "a conservative plate boundary", correct: false },
+            { text: "a joint boundary", correct: false },
+            { text: "a node", correct: false },
+          ],
+        },
+        {
+          question:
+            "The north end of the San Andreas Fault is a triple junction that can be named as:",
+          answers: [
+            {
+              text: "a ridge-transform-transform triple junction",
+              correct: false,
+            },
+            {
+              text: "a trench-transform-transform triple junction",
+              correct: true,
+            },
+            {
+              text: "a trench-transform-ridge triple junction",
+              correct: false,
+            },
+            {
+              text: "a trench-ridge-transform triple junction",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question:
+            "Places where volcanism occurs at an isolated volcano are called:",
+          answers: [
+            { text: "extinct volcanos", correct: false },
+            { text: "volcano acres", correct: false },
+            { text: "independent volcanos", correct: false },
+            { text: "hot spots", correct: true },
+          ],
+        },
+        {
+          question:
+            "As a plate moves over the hot spot, the volcano moves off and dies, and a new volcano forms over the hot spot. This process generates:",
+          answers: [
+            { text: "volcano islands", correct: false },
+            { text: "volcano acres", correct: false },
+            { text: "independent volcanos", correct: false },
+            { text: "hot-spot track", correct: true },
+          ],
+        },
+        {
+          question: "Hot spots are most likely caused by:",
+          answers: [
+            { text: "mantle plumes", correct: true },
+            { text: "volatile materials", correct: false },
+            { text: "transform plate boundaries", correct: false },
+            { text: "continental-continental collision", correct: false },
+          ],
+        },
+        {
+          question:
+            "How does a new divergent plate boundary come into existence?",
+          answers: [
+            {
+              text: "Most new divergent boundaries form when a continent splits and separates into two continents",
+              correct: false,
+            },
+            { text: "Due to the process called “rifting”", correct: false },
+            { text: "During the process of collision", correct: false },
+            { text: "All of the above", correct: false },
+            { text: "Both a and b", correct: true },
+          ],
+        },
+        {
+          question:
+            "How does an existing convergent boundary eventually cease to exist?",
+          answers: [
+            {
+              text: "It dies when a piece of buoyant lithosphere moves into the subduction zone",
+              correct: false,
+            },
+            { text: "Due to the process called “rifting”", correct: false },
+            { text: "During the process of collision", correct: false },
+            { text: "All of the above", correct: false },
+            { text: "Both a and c", correct: true },
+          ],
+        },
+        {
+          question:
+            "Collisions yield some of the most spectacular mountains on the planet, including:",
+          answers: [
+            { text: "The Himalayas", correct: false },
+            { text: "The Alps", correct: false },
+            { text: "The Appalachian Mountain", correct: false },
+            { text: "All of the above", correct: true },
+            { text: "Both a and c", correct: false },
+          ],
+        },
+        {
+          question: "Why do the plates move?",
+          answers: [
+            {
+              text: "Convention currents cause the splitting in the Earth’s crust along the mid-ocean ridges",
+              correct: false,
+            },
+            {
+              text: "The new material pushes the old farther away, thus causing the plates to move",
+              correct: false,
+            },
+            {
+              text: "External thermal such as sun radiation motivates a dynamic Earth",
+              correct: false,
+            },
+            { text: "All of the above", correct: false },
+            { text: "Both a and b", correct: true },
+          ],
+        },
+        {
+          question:
+            "The rock cycle and plate tectonics are related, because processes controlled by plate tectonics result in the formation of certain rock types in particular areas.",
+          answers: [
+            { text: "True", correct: true },
+            { text: "False", correct: false },
+          ],
+        },
+        {
+          question: "How fast do plates move on Earth today?",
+          answers: [
+            { text: "1 to 15 inch per year", correct: false },
+            { text: "1 to 15 foot per year", correct: false },
+            { text: "1 to 15 cm per year", correct: true },
+            { text: "1 to 15 meter per year", correct: false },
+          ],
+        },
+      ];
+
+      const questionElement = document.getElementById("question");
+      const answerButtons = document.getElementById("answer-buttons");
+      const nextButton = document.getElementById("next-btn");
+
+      let currentQuestionIndex = 0;
+      let score = 0;
+
+      function startQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        nextButton.innerHTML = "Next";
+        showQuestions();
+      }
+
+      function showQuestions() {
+        resetState();
+        let currentQuestion = questions[currentQuestionIndex];
+        let questionNo = currentQuestionIndex + 1;
+        questionElement.innerHTML =
+          questionNo + ". " + currentQuestion.question;
+
+        currentQuestion.answers.forEach((answer) => {
+          const button = document.createElement("button");
+          button.innerHTML = answer.text;
+          button.classList.add("btn");
+          answerButtons.appendChild(button);
+          if (answer.correct) {
+            button.dataset.correct = answer.correct;
+          }
+          button.addEventListener("click", selectAnswer);
+        });
+      }
+
+      function resetState() {
+        nextButton.style.display = "none";
+        while (answerButtons.firstChild) {
+          answerButtons.removeChild(answerButtons.firstChild);
+        }
+      }
+
+      function selectAnswer() {
+        const selectedButton = event.target;
+        const isCorrect = selectedButton.dataset.correct === "true";
+        if (isCorrect) {
+          selectedButton.classList.add("correct");
+          score++;
+        } else {
+          selectedButton.classList.add("incorrect");
+        }
+        Array.from(answerButtons.children).forEach((button) => {
+          if (button.dataset.correct === "true") {
+            button.classList.add("correct");
+          }
+          button.disabled = true;
+        });
+        nextButton.style.display = "block";
+      }
+
+      function showScore() {
+        resetState();
+        questionElement.innerHTML = `Your score is ${score} out of ${questions.length}!`;
+        nextButton.innerHTML = "Play Again";
+        nextButton.style.display = "block";
+      }
+
+      function handleNextButton() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+          showQuestions();
+        } else {
+          showScore();
+        }
+      }
+
+      nextButton.addEventListener("click", () => {
+        if (currentQuestionIndex < questions.length) {
+          handleNextButton();
+        } else {
+          startQuiz();
+        }
+      });
+
+      startQuiz();
+    </script>
+  </body>
+</html>
