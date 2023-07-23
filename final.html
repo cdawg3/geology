@@ -136,11 +136,13 @@
       /* Progress is Here */
       .container {
         position: relative;
-        width: 500px;
+        width: 70%;
+        max-width: 500px;
         padding: 50px;
         background: #fff;
         display: none;
         flex-direction: column;
+        margin: auto;
         /* justify-content: center; */
         align-items: center;
         border-radius: 20px;
@@ -212,6 +214,24 @@
         color: #001e4d;
         background: #fff;
       }
+
+      @media screen and (max-width: 500px) {
+        .app h1 {
+          font-size: 16px;
+          color: #001e4d;
+          /* color: #222; */
+          font-weight: 600;
+          /* border-bottom: 1px solid #333;
+        padding-bottom: 30px; */
+        }
+
+        .quiz h2 {
+          font-size: 16px;
+          color: #001e4d;
+          /* color: #222; */
+          font-weight: 600;
+        }
+      }
     </style>
   </head>
   <body>
@@ -220,10 +240,18 @@
         <h1>Geology 101-050</h1>
         <select id="quiz-select">
           <option value="">Select Chapter</option>
+          <option value="quizPrelude">Prelude</option>
           <option value="quiz1">Chapter 1</option>
           <option value="quiz2">Chapter 2</option>
           <option value="quiz3">Chapter 3</option>
           <option value="quiz4">Chapter 4</option>
+          <option value="quiz5">Chapter 5</option>
+          <option value="quiz6">Chapter 6</option>
+          <option value="quiz7">Chapter 7</option>
+          <option value="quiz8">Chapter 8</option>
+          <option value="quiz10">Chapter 10</option>
+          <option value="quiz11">Chapter 11</option>
+          <option value="quiz15">Chapter 15</option>
         </select>
       </div>
       <div class="quiz">
@@ -275,6 +303,121 @@
       // ];
 
       const questions = {
+        quizPrelude: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
+          {
+            question:
+              "Geology, also called Geoscience or Earth Sciences, is the study of the Earth.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "What are some of the questions focused by geologists?",
+            answers: [
+              {
+                text: "The formation and composition of our planet",
+                correct: false,
+              },
+              {
+                text: "The causes of earthquakes and ice ages",
+                correct: false,
+              },
+              { text: "The evolution of life", correct: false },
+              { text: "Protection of water resources", correct: false },
+              { text: "Exploration of oil and ores", correct: false },
+              { text: "Environmental remediation", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "Geologists address both academic questions and practical problems related to the Earth.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "In the following areas, what are the disciplines for Geology?",
+            answers: [
+              { text: "Stratigraphy", correct: false },
+              { text: "Petrology", correct: false },
+              { text: "Geochemistry", correct: false },
+              { text: "Hydrogeology", correct: false },
+              { text: "Seismology", correct: false },
+              { text: "Geography", correct: false },
+              { text: "All of the above except f", correct: true },
+            ],
+          },
+          {
+            question: "Why should we study Geology?",
+            answers: [
+              {
+                text: "Geology may be one of the most practical subjects we can learn",
+                correct: false,
+              },
+              {
+                text: "The study of geology gives us a historic context of interpreting our surroundings",
+                correct: false,
+              },
+              {
+                text: "The study of geology puts the accomplishments and consequences of human civilization in a broader context",
+                correct: false,
+              },
+              {
+                text: "When we finish this class, our view of the world may be forever colored by geologic curiosity",
+                correct: false,
+              },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "In the following questions, which of them can be related to Geology?",
+            answers: [
+              {
+                text: "Do you live in a region threatened by landslides, volcanoes, earthquakes, or floods?",
+                correct: false,
+              },
+              {
+                text: "Are you worried about the price of energy or about whether there will be a war in an oil- supplying country?",
+                correct: false,
+              },
+              {
+                text: "Do you ever wonder about where the copper in your home’s wires comes from?",
+                correct: false,
+              },
+              {
+                text: "Have you seen fields of green crops surrounded by desert and wondered where the irrigation water comes from?",
+                correct: false,
+              },
+              {
+                text: "Would you like to buy a dream house on a beach or near a river?",
+                correct: false,
+              },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "The major themes of this textbook include the rock cycle, plate tectonics theory, hydrologic cycle, and climate change through geological times.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+        ],
         quiz1: [
           // {
           //   question: "Which is the largest animal in the world?",
@@ -1690,52 +1833,1552 @@
           },
         ],
         quiz5: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
           {
-            question: "Which is the largest animal in the world?",
+            question:
+              "Which volcanic eruption caused the largest number of casualties in the 20th century?",
             answers: [
-              { text: "Elephant", correct: false },
-              { text: "Blue Whale", correct: true },
-              { text: "Giraffe", correct: false },
-              { text: "Lion", correct: false },
+              { text: "Mt. Pelee, Martinique", correct: true },
+              { text: "Mt. St. Helens, U.S.", correct: false },
+              { text: "Mt. Vesuvius, Italy", correct: false },
+              { text: "Devils Tower, U.S.", correct: false },
             ],
           },
-          // more questions...
+          {
+            question: "What are the typical products of volcanic eruptions?",
+            answers: [
+              {
+                text: "molten rock (Lava) and pyroclastic debris",
+                correct: false,
+              },
+              { text: "magma", correct: false },
+              { text: "gas and aerosols", correct: false },
+              { text: "all of the above", correct: false },
+              { text: "both a and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "The empty space left when a lava tunnel drains is called:",
+            answers: [
+              { text: "columnar joint", correct: false },
+              { text: "lava tube", correct: true },
+              { text: "pillow lava", correct: false },
+              { text: "volcano pipe", correct: false },
+            ],
+          },
+          {
+            question:
+              "Columnar joints, which contain roughly hexagonal columns of basalt, form when lava flow cools.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Most igneous rocks in the upper part of oceanic crust are composed by what specific product of volcanic eruptions?",
+            answers: [
+              { text: "Lava tubes", correct: false },
+              { text: "Columnar joints", correct: false },
+              { text: "Pillow lava", correct: true },
+              { text: "Lava bomb", correct: false },
+            ],
+          },
+          {
+            question: "What is the size (diameter) of volcano ash?",
+            answers: [
+              { text: "< 0.2 millimeter", correct: true },
+              { text: "< 2 millimeter", correct: false },
+              { text: "2 – 5 millimeter", correct: false },
+              { text: "5 ~ 10 millimeter", correct: false },
+            ],
+          },
+          {
+            question:
+              "Any pyroclastic particle that is 2 to 64 mm in diameter and is consisting of frozen lava clots, pumice fragments, or ash clumps can be called:",
+            answers: [
+              { text: "volcano relict", correct: false },
+              { text: "volcano bomb", correct: false },
+              { text: "volcano ash", correct: false },
+              { text: "lapilli", correct: true },
+            ],
+          },
+          {
+            question:
+              "What are the three major structures (shapes) of volcanoes?",
+            answers: [
+              {
+                text: "composite cone, dome, and strato volcanoes",
+                correct: false,
+              },
+              {
+                text: "shield, dome, and pipe-shape volcanoes",
+                correct: false,
+              },
+              {
+                text: "shield, strato, and cinder cone volcanoes",
+                correct: true,
+              },
+              { text: "shield, cone, and neck volcanoes", correct: false },
+            ],
+          },
+          {
+            question:
+              "In the following statements, what are the correct characteristics of Shield Volcanos?",
+            answers: [
+              {
+                text: "They are broad and slightly domed-shaped",
+                correct: false,
+              },
+              { text: "They cover large areas", correct: false },
+              {
+                text: "Formed after mild eruptions of small volumes of mafic lava",
+                correct: false,
+              },
+              { text: "All of the above", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "In the following statements, which ones are the correct characteristics for a stratovolcano?",
+            answers: [
+              {
+                text: "Many located adjacent to Pacific Ocean",
+                correct: false,
+              },
+              {
+                text: "Interbedded lava flows and pyroclastic debris",
+                correct: false,
+              },
+              { text: "< 1 km in diameter", correct: false },
+              { text: "Both a and b", correct: true },
+              { text: "Both b and c", correct: false },
+            ],
+          },
+          {
+            question: "Which of the following volcanos are stratovolcanoes?",
+            answers: [
+              { text: "Mauna Loa on Hawaii", correct: false },
+              { text: "Mt. St. Helens", correct: false },
+              { text: "Fujiyama", correct: false },
+              { text: "Both a and c", correct: false },
+              { text: "Both b and c", correct: true },
+            ],
+          },
+          {
+            question: "Which statements describe a cinder cone volcano?",
+            answers: [
+              { text: "Built from ejected lava fragments", correct: false },
+              { text: "Large size", correct: false },
+              { text: "Steep slope angle", correct: false },
+              { text: "All of the above", correct: false },
+              { text: "Both a and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "What is the relative size between shield volcano, stratovolcano, and cinder cone volcano?",
+            answers: [
+              {
+                text: "Shield volcano > Stratovolcano > Cinder cone volcano",
+                correct: true,
+              },
+              {
+                text: "Shield volcano > Cinder cone volcano > Stratovolcano",
+                correct: false,
+              },
+              {
+                text: "Stratovolcano > Shield volcano > Cinder cone volcano",
+                correct: false,
+              },
+              {
+                text: "Stratovolcano > Cinder cone volcano > Shield volcano",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "The volcanic landform exhibiting a large circular depression with steep walls and a fairly flat floor, and formed after an eruption as the center of the volcano collapses into the drained magma chamber below is called:",
+            answers: [
+              { text: "Columnar joints", correct: false },
+              { text: "Caldera", correct: true },
+              { text: "Pillow lava", correct: false },
+              { text: "Lava tubes", correct: false },
+            ],
+          },
+          {
+            question: "What are the properties of Pyroclastic Flow?",
+            answers: [
+              { text: "Felsic and intermediate magmas", correct: false },
+              { text: "Consists of ash, pumice, and debris", correct: false },
+              { text: "Materials ejected at high velocities", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question: "What are the two major eruptive styles?",
+            answers: [
+              {
+                text: "Ejective eruption and effusive eruption",
+                correct: false,
+              },
+              {
+                text: "Advective eruption and explosive eruption",
+                correct: false,
+              },
+              {
+                text: "Effusive eruption and explosive eruption",
+                correct: true,
+              },
+              {
+                text: "Dispersive eruption and explosive eruption",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "Explosive eruption is a violent eruption (i.e., explosion) mainly due to:",
+            answers: [
+              { text: "high temperature", correct: false },
+              { text: "high pressure", correct: true },
+              { text: "closest to Earth surface", correct: false },
+              { text: "large volume", correct: false },
+            ],
+          },
+          {
+            question: "What 3 factors control the explosivity of a volcano?",
+            answers: [
+              {
+                text: "Temperature, Composition, Dissolved Gases",
+                correct: true,
+              },
+              {
+                text: "Ocean Currents, Climate, Uniformitarianism",
+                correct: false,
+              },
+              {
+                text: "Meteor impact, nebula hypothesis, oil production",
+                correct: false,
+              },
+              {
+                text: "Earthquakes, Magnetism, Dissolved Solids",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "Viscosity (i.e., resistance to flow) of magma is controlled by factors different from those affecting the explosivity of volcano eruption.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "Which of the following reasons explain why mafic lavas tend to erupt mildly?",
+            answers: [
+              {
+                text: "Because it contains less silica bonds (so lower viscosity)",
+                correct: false,
+              },
+              { text: "Because gases easily escapes", correct: false },
+              { text: "Because it contains high silica bonds", correct: false },
+              { text: "Both b and c", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "Which of the following reasons explain why felsic or intermediate lavas tend to erupt explosively?",
+            answers: [
+              { text: "Because it contains less silica bonds", correct: false },
+              {
+                text: "Because gases held between tetrahedral",
+                correct: false,
+              },
+              { text: "Because it contains high silica bonds", correct: false },
+              { text: "Both b and c", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "Rising magma forms volcanic arc if it is in ocean, and it forms island arc if it is on continental margin.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "Intraplate volcanism is also called Hot Spot, which is mainly consisting of mafic magma in ocean crust and felsic magma in continental crust.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following hazards can be caused by volcanic eruptions?",
+            answers: [
+              {
+                text: "Tsunamis that can wash away coastal towns",
+                correct: false,
+              },
+              {
+                text: "Landslides and Lahars that can bury the land surface",
+                correct: false,
+              },
+              {
+                text: "Lava flow overrunning roads and towns, and ash falls that can blanket the landscape",
+                correct: false,
+              },
+              { text: "All of the above", correct: true },
+              { text: "Both a and c", correct: false },
+            ],
+          },
+          {
+            question:
+              "Based on the status of volcanoes (i.e., eruption or not), geologists distinguish among what 3 types of volcanoes?",
+            answers: [
+              {
+                text: "passive, transient, and active volcanoes",
+                correct: false,
+              },
+              {
+                text: "eruptive, non-eruptive, and dormant volcanoes",
+                correct: false,
+              },
+              { text: "active, dormant, and extinct volcanoes", correct: true },
+              {
+                text: "historic, current, and potential volcanoes",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "Volcanoes that have not been erupted for hundreds to thousands of years but may erupt again in the future are called:",
+            answers: [
+              { text: "intermittent volcanoes", correct: false },
+              { text: "dormant volcanoes", correct: true },
+              { text: "active volcanoes", correct: false },
+              { text: "active volcanoes", correct: false },
+            ],
+          },
+          {
+            question:
+              "Due to the high uncertainty in volcano eruption, geologists cannot provide near-term predictions of volcano eruptions at present, and hence people cannot take precautions.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "Which of the following signs can be short-term, distinct warning signals sent out by volcanoes before erupting?",
+            answers: [
+              {
+                text: "Changes in heat flow (increased local heat flow)",
+                correct: false,
+              },
+              { text: "Changes in shape (surface bulge)", correct: false },
+              { text: "Increases in gas and steam emission", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question: "How will volcanoes affect climate?",
+            answers: [
+              {
+                text: "Explosive eruptions emit huge quantities of gas and fine-grained debris into air",
+                correct: false,
+              },
+              {
+                text: "The significant amount of heat released by volcanoes can cause global warming",
+                correct: false,
+              },
+              {
+                text: "Portion of incoming solar radiation reflected and filtered out, causing significant global cooling",
+                correct: false,
+              },
+              { text: "Both a and b", correct: false },
+              { text: "Both a and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Volcanoes affect civilization by disrupting people’s daily life in the short term, and impacting human evolution in the long term.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Space exploration reveals that volcanism cannot occur on other planets or the moons of giant planets in the solar system.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
         ],
         quiz6: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
           {
-            question: "Which is the largest animal in the world?",
+            question:
+              "Sedimentary rocks may contain evidence of past environments, including information about sediment transport and the depositional environment.",
             answers: [
-              { text: "Elephant", correct: false },
-              { text: "Blue Whale", correct: true },
-              { text: "Giraffe", correct: false },
-              { text: "Lion", correct: false },
+              { text: "True", correct: true },
+              { text: "False", correct: false },
             ],
           },
-          // more questions...
+          {
+            question:
+              "Which of the following rocks are classified as major Sedimentary Rocks?",
+            answers: [
+              { text: "Detrital rocks", correct: false },
+              { text: "Biochemical rocks", correct: false },
+              { text: "Organic rocks", correct: false },
+              { text: "Chemical rocks", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "What is the right sequence for the formation of sediment and its transformation into clastic sedimentary rock?",
+            answers: [
+              {
+                text: "Erosion, Weathering, Transportation, Deposition, Lithification",
+                correct: false,
+              },
+              {
+                text: "Weathering, Erosion, Transportation, Deposition, Lithification",
+                correct: true,
+              },
+              {
+                text: "Transportation, Deposition, Erosion, Weathering, Lithification",
+                correct: false,
+              },
+              {
+                text: "Deposition, Erosion, Transportation, Weathering, Lithification",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "In the process of Lithification, what kinds of steps can be found?",
+            answers: [
+              { text: "Chemical weathering", correct: false },
+              { text: "Physical weathering", correct: false },
+              { text: "Compaction", correct: false },
+              { text: "Cementation", correct: false },
+              { text: "both c and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "How are Detrital sedimentary rocks primarily classified?",
+            answers: [
+              { text: "Aphanitic or Phaneritic", correct: false },
+              { text: "Igneous Texture", correct: false },
+              { text: "Color", correct: false },
+              { text: "Grain or Particle Size", correct: true },
+            ],
+          },
+          {
+            question:
+              "Which of the following minerals can act as cement for clastic sedimentary rocks?",
+            answers: [
+              { text: "Calcite (CaCO3)", correct: false },
+              { text: "Graphite (C)", correct: false },
+              { text: "Dolomite (CaMg[CO3]2)", correct: false },
+              { text: "Silica (SiO2)", correct: false },
+              { text: "both a and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "What is a major way you can tell if a sedimentary rock formed far from its source?",
+            answers: [
+              { text: "Angular Grains and Clasts", correct: false },
+              { text: "High Iron and Magnesium Content", correct: false },
+              { text: "Rounded/Spherical Grains", correct: true },
+              { text: "Low Silica Content", correct: false },
+            ],
+          },
+          {
+            question:
+              "Generally, which sedimentary rock type would have formed near its original source?",
+            answers: [
+              { text: "Conglomerate", correct: false },
+              { text: "Breccia", correct: true },
+            ],
+          },
+          {
+            question:
+              "Biochemical and organic rocks form from materials produced by living organisms.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "A Limestone that is derived from an ancient marine reef is considered to be a biochemical sedimentary rock.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following rocks belong to Organic Sedimentary Rocks?",
+            answers: [
+              { text: "Coal", correct: true },
+              { text: "Limestone", correct: false },
+              { text: "Chert", correct: false },
+              { text: "Sandstone", correct: false },
+            ],
+          },
+          {
+            question: "Coal is formed from the rapid burial and compaction of",
+            answers: [
+              { text: "Plant Matter", correct: true },
+              {
+                text: "Microscopic Marine Organisms (animals)",
+                correct: false,
+              },
+              { text: "Oil", correct: false },
+              { text: "Quartz-rich Sand", correct: false },
+            ],
+          },
+          {
+            question: "Evaporites consist of minerals precipitated from water.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following rocks belong to Chemical Sedimentary Rocks?",
+            answers: [
+              { text: "Travertine limestone", correct: false },
+              { text: "Dolostone", correct: false },
+              { text: "Flint", correct: false },
+              { text: "Evaporites", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "Sedimentary structures serve as clues to depositional settings. The following features are sedimentary structures:",
+            answers: [
+              { text: "Bedding", correct: false },
+              { text: "Ripple Marks", correct: false },
+              { text: "Mud Cracks", correct: false },
+              { text: "Fractures", correct: false },
+              { text: "All of the above except d", correct: true },
+            ],
+          },
+          {
+            question:
+              "A sequence of strata that is distinctive enough to be traced as a unit across a fairly large region is called Stratigraphic Formation.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "In effect, Dunes are “mega-ripples” that can be found in desert.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "How can a Sandstone form next to a Claystone (Shale) at the same time?",
+            answers: [
+              { text: "Decay of organic matter in soil", correct: false },
+              { text: "Hydrolysis", correct: false },
+              {
+                text: "Variations in Energy (i.e., calm water versus turbulent water)",
+                correct: true,
+              },
+              { text: "Crystal settling", correct: false },
+            ],
+          },
+          {
+            question: "The Grade Bedding is formed due to:",
+            answers: [
+              { text: "The repeated turbidity current", correct: true },
+              { text: "Strong wind", correct: false },
+              { text: "Glacial movement", correct: false },
+              { text: "Local subsidence", correct: false },
+            ],
+          },
+          {
+            question:
+              "Different types of sedimentary rocks accumulate in different depositional environmental environments.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following sedimentary environments belong to terrestrial sedimentary environments?",
+            answers: [
+              { text: "Fluvial environments", correct: false },
+              { text: "Glacial environments", correct: false },
+              { text: "Sand-dune environments", correct: false },
+              { text: "Coastal beach environments", correct: false },
+              { text: "All of the above except d", correct: true },
+            ],
+          },
+          {
+            question:
+              "What type of rocks can usually be found in mountain stream environments?",
+            answers: [
+              { text: "Arkose", correct: false },
+              { text: "Conglomerate", correct: false },
+              { text: "Travertine", correct: false },
+              { text: "Breccia", correct: false },
+              { text: "Both b and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "What type of rocks can usually be found in alluvial-fan environments?",
+            answers: [
+              { text: "Arkose", correct: false },
+              { text: "Conglomerate", correct: false },
+              { text: "Travertine", correct: false },
+              { text: "Breccia", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "What type of rocks can usually be found in coastal beach environments?",
+            answers: [
+              { text: "Arkose and conglomerate", correct: false },
+              {
+                text: "Well-sorted, medium grained sandstone with ripple marks",
+                correct: true,
+              },
+              { text: "Sand with mud cracks", correct: false },
+              { text: "Till", correct: false },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "The term of “Sedimentary Basins” refers to a depression, created as a consequence of subsidence that fills with sediment.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "What is the geological process that leads to the formation of a Foreland Basin?",
+            answers: [
+              { text: "Continent rift", correct: false },
+              {
+                text: "Subsidence between convergent plate boundaries",
+                correct: false,
+              },
+              { text: "Subsidence due to the volcano arc", correct: false },
+              {
+                text: "Weight of the mountain belt pushes down the crust’s surface",
+                correct: true,
+              },
+            ],
+          },
+          {
+            question:
+              "What do the transgression and regression processes affect environment?",
+            answers: [
+              {
+                text: "The coastline migrates inland in transgression and seaward in regression",
+                correct: false,
+              },
+              {
+                text: "Local uplift or sinking of the land surface",
+                correct: false,
+              },
+              {
+                text: "The depositional environments can migrate during this process",
+                correct: false,
+              },
+              { text: "Climate change", correct: false },
+              { text: "Both a and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Diagenesis transform sediments into sedimentary rocks. What kind of changes can occur in Diagenesis?",
+            answers: [
+              { text: "Chemical changes", correct: false },
+              { text: "Physical Changes", correct: false },
+              { text: "Biological Changes", correct: false },
+              { text: "Ecological Changes", correct: false },
+              { text: "All of the above except d", correct: true },
+            ],
+          },
+          {
+            question:
+              "Please see Handout (lecture): A sedimentary facies is best described by:",
+            answers: [
+              {
+                text: "Different types of rock formed next to each other at the same time",
+                correct: false,
+              },
+              {
+                text: "Same type of rock formed next to each other at different times",
+                correct: false,
+              },
+              {
+                text: "Different rock types formed by different energy environments at the same time",
+                correct: false,
+              },
+              { text: "Both a and c", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
         ],
         quiz7: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
           {
-            question: "Which is the largest animal in the world?",
+            question: "Metamorphism is a process where:   .",
             answers: [
-              { text: "Elephant", correct: false },
-              { text: "Blue Whale", correct: true },
-              { text: "Giraffe", correct: false },
-              { text: "Lion", correct: false },
+              {
+                text: "rocks transport from one place to another",
+                correct: false,
+              },
+              { text: "rocks change from one form to another", correct: true },
+              {
+                text: "rocks experience differential chemical weathering and erosion",
+                correct: false,
+              },
+              {
+                text: "rocks intrude into other rocks due to the pressure change",
+                correct: false,
+              },
             ],
           },
-          // more questions...
+          {
+            question:
+              "During the process of metamorphism, what is the state for the rock?",
+            answers: [
+              {
+                text: "Rock remains essentially the solid state",
+                correct: true,
+              },
+              {
+                text: "Rock can be either the solid or liquid state",
+                correct: false,
+              },
+              {
+                text: "Rock can be either the solid or gas state",
+                correct: false,
+              },
+              { text: "All of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "The protolith (which is also called the Parent Rock) of metamorphic rocks can be:  .",
+            answers: [
+              { text: "Igneous rocks", correct: false },
+              { text: "Sedimentary rocks", correct: false },
+              { text: "Other metamorphic rocks", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question: "What are the causes for metamorphism?",
+            answers: [
+              { text: "Heat", correct: false },
+              { text: "Pressure", correct: false },
+              { text: "Fluids", correct: false },
+              { text: "Parent Rock", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "What are the sources for Heat that can cause metamorphism?",
+            answers: [
+              { text: "Heat from magma", correct: false },
+              { text: "Geothermal gradient", correct: false },
+              { text: "Solar radiation", correct: false },
+              { text: "Fusion reaction", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "Lithostatic Pressure is due to the weight of the overlying rocks, and it can be described by stresses which are equal in all directions.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "Lithostatic Pressure is also called the:",
+            answers: [
+              { text: "Differential Pressure", correct: false },
+              { text: "Confining Pressure", correct: false },
+              { text: "Atmosphere Pressure", correct: false },
+              { text: "Uniform Pressure", correct: false },
+              { text: "Both b and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "What are the right properties for Differential Pressure?",
+            answers: [
+              {
+                text: "These pressures are not equal on all sides",
+                correct: false,
+              },
+              {
+                text: "Due to these pressures, rock is distorted",
+                correct: false,
+              },
+              {
+                text: "Due to these pressures, mineral grains become more closely packed and may recrystallize becoming smaller and denser minerals",
+                correct: false,
+              },
+              {
+                text: "They occur during deformation associated with mountain building",
+                correct: false,
+              },
+              { text: "a, b, and d", correct: true },
+            ],
+          },
+          {
+            question: "What is Pressure Solution?",
+            answers: [
+              {
+                text: "It means the precipitation of mineral grains on the sides undergoing more pressure",
+                correct: false,
+              },
+              {
+                text: "It means the dissolution of mineral grains on the sides undergoing less pressure",
+                correct: false,
+              },
+              {
+                text: "It means the dissolution of mineral grains on the sides undergoing more pressure",
+                correct: true,
+              },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question: "What are Hydrothermal Fluids?",
+            answers: [
+              { text: "Very hot water solutions", correct: true },
+              { text: "Lava", correct: false },
+              { text: "Water affected by geothermal", correct: false },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "What are the possible sources for Hydrothermal Fluids that can cause metamorphism?",
+            answers: [
+              { text: "Pore spaces of sedimentary rocks", correct: false },
+              { text: "Fractures in igneous rocks", correct: false },
+              { text: "Hydrated minerals", correct: false },
+              { text: "None of the above", correct: false },
+              { text: "a, b, and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Metamorphic Textures refer to what properties of mineral grains?",
+            answers: [
+              { text: "Size", correct: false },
+              { text: "Shape", correct: false },
+              { text: "Arrangement", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following textures belong to Metamorphic Rocks?",
+            answers: [
+              { text: "Foliated texture", correct: false },
+              { text: "Nonfoliated texture", correct: false },
+              { text: "Porphyroblastic texture", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "Foliated metamorphic rocks can exhibit what kind of planar arrangements?",
+            answers: [
+              {
+                text: "Parallel alignment of platy and/or elongated minerals",
+                correct: false,
+              },
+              {
+                text: "Parallel alignment of flattened grains and pebbles",
+                correct: false,
+              },
+              { text: "Compositional banding", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question: "Foliation of metamorphic rocks can be formed by:",
+            answers: [
+              {
+                text: "Rotation of platy and/or elongated minerals",
+                correct: false,
+              },
+              { text: "Recrystallization of minerals", correct: false },
+              {
+                text: "Changing shape of grains into aligned elongated shapes",
+                correct: false,
+              },
+              { text: "All of the above", correct: true },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "What are the major properties for Nonfoliated Metamorphic Rocks?",
+            answers: [
+              { text: "Parallel alignment", correct: false },
+              { text: "Elongated shape", correct: false },
+              { text: "Deformation is minimal", correct: false },
+              { text: "Equi-dimensional crystals", correct: false },
+              { text: "Both c and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "Porphyroblastic Metamorphic Rocks contain large grains surrounded by fine-grained matrix of minerals.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following rocks belong to Foliated Metamorphic Rocks?",
+            answers: [
+              { text: "Slate", correct: false },
+              { text: "Phyllite", correct: false },
+              { text: "Schist", correct: false },
+              { text: "Gneiss", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "What is the correct order of Metamorphic Rock Type from Low Grade to High Grade?",
+            answers: [
+              { text: "Schist, Gneiss, Phyllite, Slate", correct: false },
+              { text: "Slate, Phyllite, Schist, Gneiss", correct: true },
+              { text: "Slate, Gneiss, Phyllite, Schist", correct: false },
+              { text: "Gneiss, Schist, Phyllite, Slate", correct: false },
+            ],
+          },
+          {
+            question:
+              "Migmatite is a mixture of igneous rock and relict metamorphic rock, and it contains lenses of granite.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following rocks are Nonfoliated Metamorphic Rocks?",
+            answers: [
+              { text: "Marble", correct: false },
+              { text: "Slate", correct: false },
+              { text: "Quartzite", correct: false },
+              { text: "Schist", correct: false },
+              { text: "Both a and c", correct: true },
+            ],
+          },
+          {
+            question: "What is the protolith (i.e., parent rock) of Quartzite?",
+            answers: [
+              { text: "Limestone", correct: false },
+              { text: "Mudstone", correct: false },
+              { text: "Shale", correct: false },
+              { text: "Quartz-rich sandstone", correct: true },
+            ],
+          },
+          {
+            question: "What is the protolith of Marble?",
+            answers: [
+              { text: "Limestone", correct: true },
+              { text: "Mudstone", correct: false },
+              { text: "Shale", correct: false },
+              { text: "Pure quartz sandstone", correct: false },
+            ],
+          },
+          {
+            question:
+              "Metamorphism can occur in various environments, including:   .",
+            answers: [
+              { text: "Contact metamorphism", correct: false },
+              { text: "Hydrothermal metamorphism", correct: false },
+              { text: "Dynamic metamorphism", correct: false },
+              { text: "Regional metamorphism", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "Metamorphic Aureoles are concentric zones of metamorphism around an intrusion.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Hydrothermal metamorphism is widespread along axis of the Mid-Ocean Ridge system.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Dynamic Metamorphism is usually associated with fault zones where rocks are subjected to high lithostatic pressures.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "Index minerals are:",
+            answers: [
+              {
+                text: "Minerals that serve as good indicator of metamorphic grade",
+                correct: true,
+              },
+              {
+                text: "Minerals that can be easily identified",
+                correct: false,
+              },
+              {
+                text: "Minerals that occur only in specific zones",
+                correct: false,
+              },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "Metamorphism is related to Plate Tectonics. For example, both the continent-continent collisions and subduction zones can cause metamorphism.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "Rock Cycle refers to:",
+            answers: [
+              {
+                text: "The physical iteration process due to metamorphism",
+                correct: false,
+              },
+              {
+                text: "The cycle of sedimentary rocks from mountain to the sea floor",
+                correct: false,
+              },
+              {
+                text: "The transformation of Earth materials from one rock type to another, and the iteration",
+                correct: true,
+              },
+              {
+                text: "The circulation of igneous rocks from magma to lava",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question: "Why the rock cycles?",
+            answers: [
+              {
+                text: "Because of the rotation of Earth around the Sun",
+                correct: false,
+              },
+              { text: "Motivated by the solar wind", correct: false },
+              { text: "The Earth is a dynamic planet", correct: false },
+              {
+                text: "There are many rock-forming environments",
+                correct: false,
+              },
+              { text: "Both c and d", correct: true },
+            ],
+          },
+          {
+            question: "What drives the Rock Cycle in the Earth System?",
+            answers: [
+              { text: "External energy (Solar Heat)", correct: false },
+              {
+                text: "Internal energy (Earth’s internal heat)",
+                correct: false,
+              },
+              { text: "Gravity", correct: false },
+              { text: "Life", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
         ],
         quiz8: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
           {
-            question: "Which is the largest animal in the world?",
+            question:
+              "What is the approximated number of earthquakes detected every year?",
             answers: [
-              { text: "Elephant", correct: false },
-              { text: "Blue Whale", correct: true },
-              { text: "Giraffe", correct: false },
-              { text: "Lion", correct: false },
+              { text: "One million", correct: true },
+              { text: "One thousand", correct: false },
+              { text: "One hundred", correct: false },
+              { text: "A few", correct: false },
             ],
           },
-          // more questions...
+          {
+            question:
+              "On average, what is the time interval that a great earthquake triggers a horrific calamity?",
+            answers: [
+              { text: "Roughly one hundred years", correct: false },
+              { text: "Every 50 years", correct: false },
+              { text: "Every 5 to 20 years", correct: true },
+              { text: "Once a year", correct: false },
+            ],
+          },
+          {
+            question:
+              "The largest earthquake in Alabama occurred in Irondale, Jefferson County, on October 18, 1916. The intensity of this earthquake is:",
+            answers: [
+              { text: "III", correct: false },
+              { text: "V", correct: false },
+              { text: "X", correct: false },
+              { text: "VII", correct: true },
+            ],
+          },
+          {
+            question:
+              "Which of the following statements of earthquakes are right?",
+            answers: [
+              {
+                text: "Earthquakes happen during certain kinds of weather",
+                correct: false,
+              },
+              {
+                text: "California is going to fall into the sea due to earthquakes",
+                correct: false,
+              },
+              {
+                text: "Big earthquakes always happen early in the morning",
+                correct: false,
+              },
+              { text: "None of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "Most earthquakes occur due to movement on faults because of the release of energy during movement.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "What are the driving forces for Earthquakes at the large scale?",
+            answers: [
+              { text: "Solar radiation", correct: false },
+              {
+                text: "Tectonic forces (i.e., plate tectonics)",
+                correct: false,
+              },
+              {
+                text: "Movement of magma (i.e., volcano activity)",
+                correct: false,
+              },
+              { text: "Sudden slip on an existing fault", correct: false },
+              { text: "Both b, c, and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "At a small scale, what can cause earthquake activity or seismicity?",
+            answers: [
+              { text: "Drought", correct: false },
+              { text: "Giant landslide", correct: false },
+              { text: "Water pumping or injection", correct: false },
+              { text: "Underground nuclear bomb tests", correct: false },
+              { text: "Both b, c, and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "The 1906 San Francisco Earthquake was due to the slip of the San Andreas Fault, which is located at:",
+            answers: [
+              { text: "Divergent plate boundary", correct: false },
+              { text: "Transform plate boundary", correct: true },
+              { text: "Convergent plate boundary", correct: false },
+              { text: "Triple junctions", correct: false },
+            ],
+          },
+          {
+            question: "What is a fault?",
+            answers: [
+              {
+                text: "Fracture/crack along which movement has occurred",
+                correct: true,
+              },
+              { text: "A trace line where water can move", correct: false },
+              { text: "A space where energy can be stored", correct: false },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question: "The basic types of faults include:",
+            answers: [
+              { text: "Normal fault", correct: false },
+              { text: "Reverse/Thrust fault", correct: false },
+              { text: "Strike-slip fault", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question: "Which of the following faults is a Normal Fault?",
+            answers: [
+              {
+                text: "A fault where the hanging wall moves down relative to the footwall, and extensional forces are accommodated",
+                correct: true,
+              },
+              {
+                text: "A fault where the hanging wall moves up relative to the footwall and the dip angle is typically larger than 45º",
+                correct: false,
+              },
+              {
+                text: "A fault where the hanging wall moves up relative to the footwall and the fault’s slope (i.e., dip angle) is gentle (typically less than 30º)",
+                correct: false,
+              },
+              {
+                text: "A fault with a nearly vertical plane where slip occurs parallel to an imaginary horizontal line on the fault plane",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question: "Which of the following faults is a Reverse Fault?",
+            answers: [
+              {
+                text: "A fault where the hanging wall moves down relative to the footwall, and extensional forces are accommodated",
+                correct: false,
+              },
+              {
+                text: "A fault where the hanging wall moves up relative to the footwall and the dip angle is typically larger than 45º",
+                correct: true,
+              },
+              {
+                text: "A fault where the hanging wall moves up relative to the footwall and the fault’s slope (i.e., dip angle) is gentle (typically less than 30º)",
+                correct: false,
+              },
+              {
+                text: "A fault with a nearly vertical plane where slip occurs parallel to an imaginary horizontal line on the fault plane",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question: "Which of the following faults is a Thrust Fault?",
+            answers: [
+              {
+                text: "A fault where the hanging wall moves down relative to the footwall, and extensional forces are accommodated",
+                correct: false,
+              },
+              {
+                text: "A fault where the hanging wall moves up relative to the footwall and the dip angle is typically larger than 45º",
+                correct: false,
+              },
+              {
+                text: "A fault where the hanging wall moves up relative to the footwall and the fault’s slope (i.e., dip angle) is gentle (typically less than 30º)",
+                correct: true,
+              },
+              {
+                text: "A fault with a nearly vertical plane where slip occurs parallel to an imaginary horizontal line on the fault plane",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question: "Which of the following faults is a Strike-Slip Fault?",
+            answers: [
+              {
+                text: "A fault where the hanging wall moves down relative to the footwall, and extensional forces are accommodated",
+                correct: false,
+              },
+              {
+                text: "A fault where the hanging wall moves up relative to the footwall and the dip angle is typically larger than 45º",
+                correct: false,
+              },
+              {
+                text: "A fault where the hanging wall moves up relative to the footwall and the fault’s slope (i.e., dip angle) is gentle (typically less than 30º)",
+                correct: false,
+              },
+              {
+                text: "A fault with a nearly vertical plane where slip occurs parallel to an imaginary horizontal line on the fault plane",
+                correct: true,
+              },
+            ],
+          },
+          {
+            question:
+              "Both the reverse fault and the thrust fault accommodate:",
+            answers: [
+              { text: "Extensional forces", correct: false },
+              { text: "Compressional forces", correct: true },
+              { text: "Shear stresses", correct: false },
+              { text: "Elastic bending", correct: false },
+            ],
+          },
+          {
+            question:
+              "The place within the Earth where rock ruptures and slips, or the place where an explosion occurs, is called:",
+            answers: [
+              { text: "Earthquake epicenter", correct: false },
+              { text: "Earthquake focus", correct: false },
+              { text: "Earthquake hypocenter", correct: false },
+              { text: "Earthquake trace", correct: false },
+              { text: "Both b and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "The point on the surface of the Earth directly above the place where an explosion occurs is called:",
+            answers: [
+              { text: "Earthquake epicenter", correct: true },
+              { text: "Earthquake focus", correct: false },
+              { text: "Earthquake hypocenter", correct: false },
+              { text: "Earthquake trace", correct: false },
+            ],
+          },
+          {
+            question:
+              "Shallow-focus earthquakes are generally the most destructive, because:",
+            answers: [
+              { text: "they contain higher energy", correct: false },
+              { text: "they move vertically", correct: false },
+              {
+                text: "they are closer to the surface and most of the energy is released on the surface",
+                correct: true,
+              },
+              { text: "none of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "Waves of energy emitted at the focus of an earthquake are called:",
+            answers: [
+              { text: "Earthquake waves", correct: false },
+              { text: "Shockwaves", correct: false },
+              { text: "Seismic waves", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question: "Shockwaves can only travel in vertical plains.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "Shockwaves can pass through the interior of the Earth, or travel along the Earth’s surface.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "Which of the following waves belong to shockwaves?",
+            answers: [
+              { text: "Primary (P)-waves", correct: false },
+              { text: "Secondary (S)-waves", correct: false },
+              { text: "Surface (R)-waves", correct: false },
+              { text: "Surface (L)-waves", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "In seismic waves, which one travels the fastest and thus arrives first?",
+            answers: [
+              { text: "P-waves", correct: true },
+              { text: "S-waves", correct: false },
+              { text: "R-waves", correct: false },
+              { text: "L-waves", correct: false },
+            ],
+          },
+          {
+            question:
+              "Seismographs are records of vibrations caused by the shock waves, where a larger amplitude of vibration is associated with a stronger earthquake.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following scales can define the “size” of earthquakes?",
+            answers: [
+              { text: "The Intensity Scale", correct: false },
+              { text: "The Hardness Scale", correct: false },
+              { text: "The Magnitude Scale", correct: false },
+              { text: "The Damage Scale", correct: false },
+              { text: "Both a and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Which one in the following scales can measure the effect or consequence of an earthquake’s ground shaking at a locality on the Earth’s surface?",
+            answers: [
+              { text: "The Modified Mercalli Intensity Scale", correct: true },
+              { text: "The Richter Magnitude Scale", correct: false },
+              { text: "The Damage Scale", correct: false },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "The Richter Magnitude Scale uses the difference of arrival times of the following two seismic waves:",
+            answers: [
+              { text: "R-wave and L-wave", correct: false },
+              { text: "S-wave and P-wave", correct: true },
+              { text: "R-wave and P-wave", correct: false },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "In the Richter Magnitude Scale, a M=8 earthquake yields times as much ground motion as a M=7 earthquake.",
+            answers: [
+              { text: "2", correct: false },
+              { text: "5", correct: false },
+              { text: "10", correct: true },
+              { text: "100", correct: false },
+            ],
+          },
+          {
+            question:
+              "In the Richter Magnitude Scale, a M=8 earthquake releases times as much energy as a M=7 earthquake.",
+            answers: [
+              { text: "5", correct: false },
+              { text: "10", correct: false },
+              { text: "32", correct: true },
+              { text: "100", correct: false },
+            ],
+          },
+          {
+            question:
+              "Measurements from how many seismic stations will allow seismologists to determine the epicenter location of one earthquake?",
+            answers: [
+              { text: "at least 2", correct: false },
+              { text: "at least 3", correct: true },
+              { text: "at least 4", correct: false },
+              { text: "more than 5", correct: false },
+            ],
+          },
+          {
+            question:
+              "Information from the way a wave propagates through the Earth interior can tell us something about the internal structure of the Earth.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "We can make long-term predictions of Earthquakes on the time scale of:",
+            answers: [
+              { text: "days", correct: false },
+              { text: "weeks", correct: false },
+              { text: "years", correct: false },
+              { text: "decades to centuries", correct: true },
+            ],
+          },
+          {
+            question: "Pages 280-283: How to reduce Earthquake hazards?",
+            answers: [
+              { text: "Predict short-term earthquakes", correct: false },
+              {
+                text: "Better construction practices and zoning",
+                correct: false,
+              },
+              {
+                text: "Educating people about what to do during an earthquake",
+                correct: false,
+              },
+              { text: "All of the above", correct: false },
+              { text: "Both b and c", correct: true },
+            ],
+          },
         ],
         quiz9: [
           {
@@ -1750,28 +3393,588 @@
           // more questions...
         ],
         quiz10: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
           {
-            question: "Which is the largest animal in the world?",
+            question: "Geologic Time is the span of time since:",
             answers: [
-              { text: "Elephant", correct: false },
-              { text: "Blue Whale", correct: true },
-              { text: "Giraffe", correct: false },
-              { text: "Lion", correct: false },
+              { text: "the formation of the Earth", correct: true },
+              { text: "the generation of the oldest rock", correct: false },
+              { text: "the beginning of the universe", correct: false },
+              { text: "the first time with human record", correct: false },
             ],
           },
-          // more questions...
+          {
+            question:
+              "The principle of Uniformitarianism assumes that physical processes that operate in the modern world also operated in the past, at quite different rates.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "The age of one geologic feature with respect to another is called:",
+            answers: [
+              { text: "Absolute age", correct: false },
+              { text: "Numerical age", correct: false },
+              { text: "Relative age", correct: true },
+              { text: "Geological age", correct: false },
+            ],
+          },
+          {
+            question:
+              "Numerical age is the age of one geologic feature given in years, which is also called:",
+            answers: [
+              { text: "Absolute age", correct: true },
+              { text: "Isotopic age", correct: false },
+              { text: "Relative age", correct: false },
+              { text: "Geological age", correct: false },
+            ],
+          },
+          {
+            question:
+              "To define the relative age of one geologic feature, one can use geologic principles.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following principles are geologic principles for defining relative age?",
+            answers: [
+              { text: "Principle of Original Horizontality", correct: false },
+              { text: "Principle of Uniformitarianism", correct: false },
+              { text: "Principle of Superposition", correct: false },
+              { text: "Principle of Cross-cutting Relations", correct: false },
+              { text: "All of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "In the principle of original horizontality, what is the mechanism that causes sediment to accumulate in fairly horizontal sheets on a flat plain?",
+            answers: [
+              { text: "Viscosity", correct: false },
+              { text: "Sorption", correct: false },
+              { text: "Pressure", correct: false },
+              { text: "Gravity", correct: true },
+            ],
+          },
+          {
+            question:
+              "Based on the principle of Superposition, we know that, in a sequence of strata, the following relative age is right:",
+            answers: [
+              {
+                text: "A layer of sediment should be the same age as its adjacent one",
+                correct: false,
+              },
+              { text: "The youngest bed is on the bottom", correct: false },
+              { text: "Younger strata above older strata", correct: true },
+              {
+                text: "Each layer of sediment must be older than the one below",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "Based on the principle of Lateral Continuity, layers of rocks can be continuous over broad areas when first deposited, although erosion may later remove part of a layer.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Based on the principle of Cross-Cutting Relations, which of the following statements are right?",
+            answers: [
+              {
+                text: "If one geologic feature cuts across another, the feature that has been cut is younger",
+                correct: false,
+              },
+              { text: "Younger features cut older ones", correct: false },
+              {
+                text: "Cross cutting relations do not provide directly the relative age",
+                correct: false,
+              },
+              {
+                text: "If a fault cuts across and displaces layers of sedimentary rock, then the fault must be younger than the layers.",
+                correct: false,
+              },
+              { text: "Both b and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "Based on the principle of Baked Contacts, which of the following statements are right?",
+            answers: [
+              {
+                text: "If an igneous intrusion “bakes” surrounding rocks, then the rock that has been baked must be younger than the intrusion",
+                correct: false,
+              },
+              {
+                text: "The intrusion geologic feature is younger than the original rock",
+                correct: false,
+              },
+              {
+                text: "Baked contacts do not provide directly the relative age, because of the later erosion",
+                correct: false,
+              },
+              {
+                text: "When pluton (one igneous rock) was found to bake the adjacent rock, then this pluton is relatively younger",
+                correct: false,
+              },
+              { text: "Both b and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "A rock containing an inclusion (i.e., fragment of another rock) must be younger than the inclusion.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "What properties about fossil deposition make Fossil Succession one geologic principle for defining relative age?",
+            answers: [
+              {
+                text: "Fossil species has a broad range in strata",
+                correct: false,
+              },
+              {
+                text: "Each fossil species has a limited range in a succession of strata, therefore fossil species occur in strata in a predictable order",
+                correct: false,
+              },
+              {
+                text: "Once a fossil species becomes extinct, it never reappears",
+                correct: false,
+              },
+              {
+                text: "The same fossil species may appear at different layers at different times",
+                correct: false,
+              },
+              { text: "Both b and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Fossil Succession is a useful geologic principle for defining relative age because ranges of different fossils can never overlap.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "An interval of nondeposition and/or erosion is called:",
+            answers: [
+              { text: "a local subsidence", correct: false },
+              { text: "a nonstationarity", correct: false },
+              { text: "an unconformity", correct: true },
+              { text: "a nonuniformity", correct: false },
+            ],
+          },
+          {
+            question:
+              "Because of unconformities, the geologic record at any given location is incomplete. In other words, no one locality on Earth can provide a complete record of our planet’s history.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "The gap in the geologic record (that an unconformity represents) is called:",
+            answers: [
+              { text: "a hiatus", correct: true },
+              { text: "an interface", correct: false },
+              { text: "erosion", correct: false },
+              { text: "a missing period", correct: false },
+            ],
+          },
+          {
+            question:
+              "What kinds of unconformities that geologists have recognized?",
+            answers: [
+              { text: "Angular unconformity", correct: false },
+              { text: "Cross unconformity", correct: false },
+              { text: "Nonconformity", correct: false },
+              { text: "Disconformity", correct: false },
+              { text: "All of the above except b", correct: true },
+            ],
+          },
+          {
+            question:
+              "If the Angular Unconformity is simplified as three steps: (1) Erosion produces a flat surface; (2) Deposition layers undergoing folding; (3) Sea level rises and new layers of sediment accumulate; then what is the right sequence for these steps?",
+            answers: [
+              { text: "(1), (2), (3)", correct: false },
+              { text: "(3), (2), (1)", correct: false },
+              { text: "(2), (1), (3)", correct: true },
+              { text: "(2), (3), (1)", correct: false },
+            ],
+          },
+          {
+            question: "What is Angular Unconformity?",
+            answers: [
+              {
+                text: "The strata below were tilted or folded before the unconformity developed",
+                correct: true,
+              },
+              {
+                text: "Sedimentary rocks overlie basement (typically consisting of igneous and/or metamorphic rocks)",
+                correct: false,
+              },
+              {
+                text: "An unconformity parallel to the two sedimentary sequences it separates",
+                correct: false,
+              },
+              {
+                text: "An unconformity due to cross cutting beds",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "If the Nonconformity is simplified as three steps: (1) New sedimentary layers accumulated above the erosion surface; (2) Erosion cuts down into the crystalline rock; (3) A pluton intrudes; then what is the right sequence for these steps?",
+            answers: [
+              { text: "(3), (2), (1)", correct: true },
+              { text: "(1), (2), (3)", correct: false },
+              { text: "(2), (1), (3)", correct: false },
+              { text: "(2), (3), (1)", correct: false },
+            ],
+          },
+          {
+            question: "What is Nonconformity?",
+            answers: [
+              {
+                text: "The strata below were tilted or folded before the unconformity developed",
+                correct: false,
+              },
+              {
+                text: "Sedimentary rocks overlie basement (typically consisting of igneous and/or metamorphic rocks)",
+                correct: true,
+              },
+              {
+                text: "An unconformity parallel to the two sedimentary sequences it separates",
+                correct: false,
+              },
+              {
+                text: "An unconformity due to cross cutting beds",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "If the Disconformity is simplified as three steps: (1) Layers of sediment accumulate; (2) Sea level drops and an erosion surface forms; (3) Sea level rises and new sedimentary layers accumulate; then what is the right sequence for these steps?",
+            answers: [
+              { text: "(3), (2), (1)", correct: false },
+              { text: "(1), (2), (3)", correct: true },
+              { text: "(2), (1), (3)", correct: false },
+              { text: "(2), (3), (1)", correct: false },
+            ],
+          },
+          {
+            question: "What is Disconformity?",
+            answers: [
+              {
+                text: "The strata below were tilted or folded before the unconformity developed",
+                correct: false,
+              },
+              {
+                text: "Sedimentary rocks overlie basement (typically consisting of igneous and/or metamorphic rocks)",
+                correct: false,
+              },
+              {
+                text: "An unconformity parallel to the two sedimentary sequences it separates",
+                correct: true,
+              },
+              {
+                text: "An unconformity due to cross cutting beds",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "What are the methods that can correlate the strata at one location and the strata at another?",
+            answers: [
+              { text: "Lithologic correlation method", correct: false },
+              { text: "Fossil correlation method", correct: false },
+              { text: "Structure correlation method", correct: false },
+              { text: "Geologic Time correlation method", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "Geologic Column is a composite stratigraphic chart that represents the entirety of the Earth’s history.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Geologic column is subdivided into time zones. From large internals to small intervals, the names of these time zones are:",
+            answers: [
+              { text: "Epoch, Period, Era, Eon", correct: false },
+              { text: "Eon, Era, Period, Epoch", correct: true },
+              { text: "Eon, Period, Era, Epoch", correct: false },
+              { text: "Eon, Epoch, Era, Period", correct: false },
+            ],
+          },
+          {
+            question:
+              "What do geologists usually use to determine the numerical age of rocks?",
+            answers: [
+              { text: "Isotopic dating", correct: true },
+              { text: "Index fossil", correct: false },
+              { text: "Level of SiO2 in the rock", correct: false },
+              { text: "Both a and c", correct: false },
+            ],
+          },
+          {
+            question: "We can isotopically date a sedimentary rock directly.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "Tree rings can provide reference for rock ages, where one wood ring represents the growth of one year.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Seasonal changes (Spring versus Winter) affect rates of the following phenomena, and therefore provide additional information for determining rock age:",
+            answers: [
+              {
+                text: "Shell growth (one shell growth ring = one year)",
+                correct: false,
+              },
+              {
+                text: "Snow accumulation (rhythmic layering in a glacial ice)",
+                correct: false,
+              },
+              {
+                text: "Clastic sediment deposition (rhythmic layering in sediments)",
+                correct: false,
+              },
+              { text: "Chemical sediment precipitation", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "If we equate the entire Earth history to a single calendar year, then the human history only takes place in the last 30 seconds.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
         ],
         quiz11: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
           {
-            question: "Which is the largest animal in the world?",
+            question: "The time interval for the Hadean Eon is 4.57~3.85 Ga.",
             answers: [
-              { text: "Elephant", correct: false },
-              { text: "Blue Whale", correct: true },
-              { text: "Giraffe", correct: false },
-              { text: "Lion", correct: false },
+              { text: "True", correct: true },
+              { text: "False", correct: false },
             ],
           },
-          // more questions...
+          {
+            question: "What major events happened in the Hadean Eon?",
+            answers: [
+              {
+                text: "The planet was so hot that its surface was a magma ocean",
+                correct: false,
+              },
+              { text: "Underwent intense meteor bombardment", correct: false },
+              { text: "Internal differentiation", correct: false },
+              {
+                text: "Formation of Earth’s initial atmosphere",
+                correct: false,
+              },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question: "There is no rock record in the Hadean Eon.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "When did the Moon form?",
+            answers: [
+              { text: "in Hadean Eon", correct: true },
+              { text: "in Archean Eon", correct: false },
+              { text: "in Tertiary Period", correct: false },
+              { text: "in Paleozoic Era", correct: false },
+            ],
+          },
+          {
+            question:
+              "Geologists divided the Earth’s history into the following eons:",
+            answers: [
+              {
+                text: "Hadean, Archean, Proterozoic, Phanerozoic",
+                correct: true,
+              },
+              { text: "Paleozoic, Mesozoic, Cenozoic", correct: false },
+              {
+                text: "Cambrian, Ordovician, Silurian, Devonian",
+                correct: false,
+              },
+              { text: "Tertiary, Quaternary, Phanerozoic", correct: false },
+            ],
+          },
+          {
+            question:
+              "In the time interval of Archean, what appeared for the first time?",
+            answers: [
+              { text: "The first continent crust", correct: false },
+              { text: "The first rock", correct: false },
+              { text: "The first life", correct: false },
+              { text: "The first reptile", correct: false },
+              { text: "All of the above except d", correct: true },
+            ],
+          },
+          {
+            question:
+              "Cratons formed first in Proterozoic and then led to supercontinents.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "In the Proterozoic Eon, the atmosphere began to accumulate significant oxygen. This is called",
+            answers: [
+              { text: "the life explosion", correct: false },
+              { text: "the global oxygen", correct: false },
+              { text: "the transition event", correct: false },
+              { text: "the great oxygenation event", correct: true },
+            ],
+          },
+          {
+            question: "Snowball Earth appeared at the end of Proterozoic.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "The Phanerozoic Eon consists of the following three eras:",
+            answers: [
+              { text: "Hadean, Archean, Proterozoic", correct: false },
+              { text: "Paleozoic, Mesozoic, Cenozoic", correct: true },
+              { text: "Cambrian, Ordovician, Silurian", correct: false },
+              { text: "Paleogene, Tertiary, Quaternary", correct: false },
+            ],
+          },
+          {
+            question: "Epicontinental Sea is a deep sea overlying a continent.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "In the early Paleozoic Era, a remarkable diversification of life appeared. This event is called",
+            answers: [
+              { text: "Mass extinction", correct: false },
+              { text: "Cambrian explosion of life", correct: true },
+              { text: "Jurassic explosion of life", correct: false },
+              { text: "K-T boundary event", correct: false },
+            ],
+          },
+          {
+            question:
+              "In the late Paleozoic Era, continents coalesced to form a supercontinent called",
+            answers: [
+              { text: "Supercontinent Rodinia", correct: false },
+              { text: "Supercontinent Pannotia", correct: false },
+              { text: "Supercontinent Laurentia", correct: false },
+              { text: "Supercontinent Pangaea", correct: true },
+            ],
+          },
+          {
+            question:
+              "Dinosaurs reached their peak of success at which period?",
+            answers: [
+              { text: "Permian period", correct: false },
+              { text: "Triassic period", correct: false },
+              { text: "Jurassic period", correct: false },
+              { text: "Cretaceous period", correct: true },
+            ],
+          },
+          {
+            question:
+              "The K-T Boundary Event caused a sudden and extensive mass extinction. What do “K” and “T” in the K-T Boundary Event stand for?",
+            answers: [
+              { text: "Cretaceous and Tertiary", correct: true },
+              { text: "Cambrian and Triassic", correct: false },
+              { text: "Carboniferous and Triassic", correct: false },
+              { text: "Paleogene and Tertiary", correct: false },
+            ],
+          },
+          {
+            question:
+              "The cause for the K-T Boundary Event is most likely due to",
+            answers: [
+              { text: "collision of an asteroid", correct: true },
+              { text: "snowball earth", correct: false },
+              { text: "worldwide flood", correct: false },
+              { text: "ice age", correct: false },
+            ],
+          },
+          {
+            question:
+              "It is most likely that the K-T Boundary Event caused the extinction of",
+            answers: [
+              { text: "jawless fish", correct: false },
+              { text: "dinosaurs", correct: true },
+              { text: "the first mammals", correct: false },
+              { text: "the first eukaryotic cells", correct: false },
+            ],
+          },
+          {
+            question: "The human genus, Homo, appeared and evolved through the",
+            answers: [
+              { text: "Jurassic", correct: false },
+              { text: "Hadean", correct: false },
+              { text: "Proterozoic", correct: false },
+              { text: "Pleistocene ice age", correct: true },
+            ],
+          },
         ],
         quiz12: [
           {
@@ -1810,16 +4013,459 @@
           // more questions...
         ],
         quiz15: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
           {
-            question: "Which is the largest animal in the world?",
+            question:
+              "Passive continental margins occur on both sides of the Atlantic Ocean.",
             answers: [
-              { text: "Elephant", correct: false },
-              { text: "Blue Whale", correct: true },
-              { text: "Giraffe", correct: false },
-              { text: "Lion", correct: false },
+              { text: "True", correct: true },
+              { text: "False", correct: false },
             ],
           },
-          // more questions...
+          {
+            question:
+              "Broad continental shelves overlie what type of continental margin basins?",
+            answers: [
+              { text: "Passive-margin basins", correct: true },
+              { text: "Active-margin basins", correct: false },
+              { text: "Transform-margin basins", correct: false },
+              { text: "Stable-margin basins", correct: false },
+            ],
+          },
+          {
+            question:
+              "Narrow continental shelves form along what type of margins?",
+            answers: [
+              { text: "Passive continental margins", correct: false },
+              { text: "Active continental margins", correct: true },
+              { text: "Transform continental margins", correct: false },
+              { text: "Strike-slide continental margins", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following coasts contain broad continental shelves?",
+            answers: [
+              { text: "Pacific coast", correct: false },
+              { text: "Atlantic coast", correct: false },
+              { text: "Gulf coast", correct: false },
+              { text: "both a and b", correct: false },
+              { text: "both b and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Abyssal Plain is a broad, uneven region of the ocean that lies at least 4.5 km below sea level.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "Abyssal Plain overlies what type of lithosphere?",
+            answers: [
+              { text: "Rigid continental lithosphere", correct: false },
+              { text: "Old, warm ocean lithosphere", correct: false },
+              { text: "Old, cool ocean lithosphere", correct: true },
+              { text: "Young, cool ocean lithosphere", correct: false },
+            ],
+          },
+          {
+            question: "Seamount is a submarine mountain that forms above:",
+            answers: [
+              { text: "middle-ocean ridge", correct: false },
+              { text: "submarine transform faults", correct: false },
+              { text: "black holes", correct: false },
+              { text: "submarine canyon", correct: false },
+              { text: "hot spots", correct: true },
+            ],
+          },
+          {
+            question:
+              "The salinity (which is the concentration of salt in water), temperature, and density of seawater vary with location and depth.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "What is the average salinity of ocean water?",
+            answers: [
+              { text: "0.5%", correct: false },
+              { text: "3.5%", correct: true },
+              { text: "10.5%", correct: false },
+              { text: "20.5%", correct: false },
+            ],
+          },
+          {
+            question: "What is the average global sea-surface temperature?",
+            answers: [
+              { text: "~5º C", correct: false },
+              { text: "~10º C", correct: false },
+              { text: "~17º C", correct: true },
+              { text: "~22º C", correct: false },
+            ],
+          },
+          {
+            question:
+              "The boundary between layers of ocean water with differing temperatures is called:",
+            answers: [
+              { text: "wave line", correct: false },
+              { text: "temperature line", correct: false },
+              { text: "thermal depth", correct: false },
+              { text: "thermocline", correct: true },
+            ],
+          },
+          {
+            question: "Circulation in the sea occurs in what levels?",
+            answers: [
+              { text: "Surface currents", correct: false },
+              { text: "Middle currents", correct: false },
+              { text: "Deep currents", correct: false },
+              { text: "All of the above", correct: false },
+              { text: "Both a and c", correct: true },
+            ],
+          },
+          {
+            question: "Surface currents affect the upper ten meters of water.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "Surface currents are driven by:",
+            answers: [
+              {
+                text: "interaction between the sea surface and the wind",
+                correct: true,
+              },
+              { text: "temperature gradient", correct: false },
+              { text: "contrasts in water density", correct: false },
+              {
+                text: "the vertical upwelling and downwelling of seawater",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question: "Deep currents are created by:",
+            answers: [
+              {
+                text: "interaction between the sea surface and the wind",
+                correct: false,
+              },
+              {
+                text: "the difference between temperature and salinity",
+                correct: false,
+              },
+              { text: "contrasts in density", correct: false },
+              {
+                text: "the vertical upwelling and downwelling of seawater",
+                correct: true,
+              },
+            ],
+          },
+          {
+            question:
+              "The rotation direction of the surface current at the northern hemisphere is the opposite of that at the southern hemisphere. This discrepancy is due to:",
+            answers: [
+              { text: "the thermohaline circulation", correct: false },
+              {
+                text: "the gravitational forces of the Sun-Moon system",
+                correct: false,
+              },
+              { text: "the Coriolis Effect", correct: true },
+              {
+                text: "the centrifugal force of the Earth-Moon system",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "According to the Coriolis Effect, surface currents in the northern hemisphere veer toward which direction?",
+            answers: [
+              { text: "The left", correct: false },
+              { text: "The right", correct: true },
+              { text: "The north", correct: false },
+              { text: "The south", correct: false },
+            ],
+          },
+          {
+            question:
+              "What reasons cause the downwelling and upwelling of ocean water?",
+            answers: [
+              {
+                text: "Winds that drive water surplus or deficit",
+                correct: false,
+              },
+              { text: "Contrasts in water density", correct: false },
+              { text: "Tidal effect", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "Thermohaline circulation results in a global- scale “conveyor belt” that circulates water throughout the entire ocean system.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "The area between lowest tide level and the highest elevation on land affected by storms is called:",
+            answers: [
+              { text: "Shore", correct: true },
+              { text: "Coast", correct: false },
+              { text: "Coastline", correct: false },
+              { text: "Embayment", correct: false },
+            ],
+          },
+          {
+            question: "The coastline is the same as the shoreline.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "Seaward of Nearshore is called:",
+            answers: [
+              { text: "Foreshore zone", correct: false },
+              { text: "Backshore zone", correct: false },
+              { text: "Headland zone", correct: false },
+              { text: "Offshore zone", correct: true },
+            ],
+          },
+          {
+            question:
+              "Tides are the hourly changes in the elevation of the ocean surface.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "What are the causes of tides?",
+            answers: [
+              { text: "The gravitational force of the Moon", correct: false },
+              { text: "The gravitational force of the Sun", correct: false },
+              {
+                text: "The centrifugal force produced by the evolution of the Earth-Moon System around its center of mass",
+                correct: false,
+              },
+              { text: "all of the above", correct: true },
+              { text: "Both a and c", correct: false },
+            ],
+          },
+          {
+            question: "When do the Spring tides occur?",
+            answers: [
+              { text: "During the first quarter of the Moon", correct: false },
+              { text: "During the third quarter of the Moon", correct: false },
+              { text: "During the new Moon", correct: false },
+              { text: "During the full Moon", correct: false },
+              { text: "Both c and d", correct: true },
+            ],
+          },
+          {
+            question: "When do the Neap tides occur?",
+            answers: [
+              { text: "During the first quarter of the Moon", correct: false },
+              { text: "During the third quarter of the Moon", correct: false },
+              { text: "During the new Moon", correct: false },
+              { text: "During the full Moon", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "Spring tides occur when the Moon and Sun are offset, while the Neap tides occur when the Moon and the Sun are aligned.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "What patterns that tides exhibit?",
+            answers: [
+              { text: "Semidiurnal tidal pattern", correct: false },
+              { text: "Diurnal tidal pattern", correct: false },
+              { text: "Mixed tidal pattern", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "The broad, nearly horizontal plain affected by the tidal currents, which is exposed or nearly exposed at low tide but totally submerged at high tide, is called:",
+            answers: [
+              { text: "Tidal Flat", correct: true },
+              { text: "Delta", correct: false },
+              { text: "Tombolo", correct: false },
+              { text: "Baymouth bar", correct: false },
+            ],
+          },
+          {
+            question: "Which mechanism is steadily slowing Earth’s rotation?",
+            answers: [
+              { text: "The deep sea currents", correct: false },
+              { text: "The thermohaline circulation", correct: false },
+              { text: "The tidal friction", correct: true },
+              { text: "The gravitational force", correct: false },
+            ],
+          },
+          {
+            question: "Waves derive their energy and motion from:",
+            answers: [
+              { text: "Wind", correct: true },
+              { text: "Gravity", correct: false },
+              { text: "Tide", correct: false },
+              { text: "Thermal from Sun", correct: false },
+            ],
+          },
+          {
+            question:
+              "The size and period of a wave is controlled by what three factors?",
+            answers: [
+              {
+                text: "Wind speed, time wind has blown, tides",
+                correct: false,
+              },
+              { text: "Time wind has blown, fetch, tides", correct: false },
+              { text: "Wind speed, time wind has blown, fetch", correct: true },
+              {
+                text: "Distance wind has blown, time the wind has blown, tides",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question: "What are the major types for waves?",
+            answers: [
+              { text: "Wave of oscillation", correct: false },
+              { text: "Wave of longshore", correct: false },
+              { text: "Wave of translation", correct: false },
+              { text: "all of the above", correct: false },
+              { text: "Both a and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Waves seldom approach the shore straight on, but rather at an angle larger than 5º.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "What are the consequences of wave refraction?",
+            answers: [
+              {
+                text: "Wave energy is concentrated against sides and ends of headlands",
+                correct: false,
+              },
+              { text: "Wave energy spread out in bays", correct: false },
+              {
+                text: "Wave erosion straightens irregular shoreline",
+                correct: false,
+              },
+              { text: "All of the above", correct: true },
+              { text: "both a and c", correct: false },
+            ],
+          },
+          {
+            question:
+              "Waves that reach shoreline at an angle cause sediment to move along beach in a zigzag pattern called:",
+            answers: [
+              { text: "beach drift", correct: true },
+              { text: "beach erosion", correct: false },
+              { text: "wave drift", correct: false },
+              { text: "rogue wave", correct: false },
+            ],
+          },
+          {
+            question:
+              "Oblique waves produce longshore currents, whose flow direction is:",
+            answers: [
+              { text: "perpendicular to the coast", correct: false },
+              { text: "parallel to the coast", correct: true },
+              { text: "oblique to the coast", correct: false },
+              { text: "following arbitrary angles", correct: false },
+            ],
+          },
+          {
+            question:
+              "In the following features, what are the shoreline features caused by wave erosion?",
+            answers: [
+              { text: "Wave-cut cliffs", correct: false },
+              { text: "Wave-cut platform", correct: false },
+              {
+                text: "Features associated with headlands, such as sea arch and sea stack",
+                correct: false,
+              },
+              { text: "Spits", correct: false },
+              { text: "both a, b, and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "What is most significant factor responsible for the transport of large quantities of sediment along the coast?",
+            answers: [
+              { text: "Waves", correct: false },
+              { text: "Longshore Current", correct: true },
+              { text: "Storms", correct: false },
+              { text: "Tides", correct: false },
+            ],
+          },
+          {
+            question:
+              "In the following features, what are the depositional shoreline features related to beach drift and longshore currents?",
+            answers: [
+              { text: "Spits", correct: false },
+              { text: "Baymouth bar", correct: false },
+              { text: "Tombolo", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "both b and c", correct: false },
+            ],
+          },
+          {
+            question:
+              "If the shoreline remains stable, the result of shoreline erosion and deposition is to eventually produce a straighter coast.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "In the following techniques, which ones were used to stabilize the shore?",
+            answers: [
+              { text: "Jetties", correct: false },
+              { text: "Groins", correct: false },
+              { text: "Breakwaters and Seawalls", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "Jetties built to prevent beach deposition actually cause deposition on the downcurrent side.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
         ],
         quiz16: [
           {
@@ -1958,7 +4604,7 @@
 
         container.style.display = "flex";
         let progress = setInterval(() => {
-          if (start < (score / currentQuizQuestions.length) * 100) {
+          if (start < Math.round((score / currentQuizQuestions.length) * 100)) {
             start++;
             progressEnd();
           } else {
@@ -1968,10 +4614,12 @@
 
           function progressEnd() {
             value.textContent = `${start}%`;
-            progressCircular.style.background = `conic-gradient(#001e4d ${
+            progressCircular.style.background = `conic-gradient(#001e4d ${Math.round(
               start * 3.6
-            }deg, #ededed 0deg)`;
-            if (start == (score / currentQuizQuestions.length) * 100) {
+            )}deg, #ededed 0deg)`;
+            if (
+              start == Math.round((score / currentQuizQuestions.length) * 100)
+            ) {
               clearInterval(progress);
               // input.value = "";
             }
