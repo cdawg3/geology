@@ -1,0 +1,2003 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #001e4d;
+        /* background: #9E1B32; */
+      }
+
+      .app {
+        background: #fff;
+        width: 90%;
+        max-width: 600px;
+        margin: 100px auto 0;
+        border-radius: 10px;
+        padding: 30px;
+      }
+
+      .app h1 {
+        font-size: 25px;
+        color: #001e4d;
+        /* color: #222; */
+        font-weight: 600;
+        /* border-bottom: 1px solid #333;
+        padding-bottom: 30px; */
+      }
+
+      .quiz {
+        padding: 20px 0;
+      }
+
+      .quiz h2 {
+        font-size: 18px;
+        color: #001e4d;
+        /* color: #222; */
+        font-weight: 600;
+      }
+
+      .btn {
+        background: #fff;
+        color: #222;
+        font-weight: 500;
+        width: 100%;
+        border: 1px solid #222;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: left;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover:not([disabled]) {
+        background: #001e4d;
+        /* background: #9E1B32; */
+        color: #fff;
+      }
+
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      #next-btn {
+        background: #001e4d;
+        /* background: #9E1B32; */
+        color: #fff;
+        font-weight: 500;
+        width: 150px;
+        border: 0;
+        padding: 10px;
+        margin: 20px auto 0;
+        border-radius: 5px;
+        cursor: pointer;
+        display: none;
+      }
+
+      .correct {
+        background: #9aeabc;
+      }
+
+      .incorrect {
+        background: #ff9393;
+      }
+
+      /* Experimental */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #333;
+        padding-bottom: 30px;
+      }
+
+      #quiz-select {
+        margin-left: auto;
+        margin-top: 0;
+        margin-bottom: auto;
+        align-self: center;
+        background: #fff;
+        color: #222;
+        font-weight: 500;
+        width: 150px;
+        border: 1px solid #222;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      #quiz-select:hover {
+        background: #001e4d;
+        color: #fff;
+      }
+
+      #quiz-select:focus {
+        outline: none;
+      }
+
+      #quiz-select option::selection {
+        background: #001e4d;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      /* Progress is Here */
+      .container {
+        position: relative;
+        width: 500px;
+        padding: 50px;
+        background: #fff;
+        display: none;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 20px;
+      }
+
+      .progress-circular {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        background: conic-gradient(#001e4d 0deg, #ededed 0deg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .progress-circular::after {
+        position: absolute;
+        content: "";
+        width: 210px;
+        height: 210px;
+        border-radius: 50%;
+        background: #ededed;
+      }
+
+      .value {
+        font-size: 60px;
+        font-weight: 600;
+        color: #001e4d;
+        z-index: 9;
+      }
+
+      .text {
+        font-size: 25px;
+        font-weight: 600;
+        color: #001e4d;
+        margin: 20px 0;
+      }
+
+      .btn2 {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+      }
+
+      input {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        border: 1px solid #001e4d;
+        border-radius: 10px 10px 0 0;
+        outline: none;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 600;
+        color: #001e4d;
+      }
+
+      .btn3 {
+        border-radius: 0 0 10px 10px;
+        outline: none;
+        background: #001e4d;
+        color: #fff;
+        font-size: 18px;
+        border: none;
+      }
+
+      .btn3:active {
+        color: #001e4d;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="header">
+        <h1>Geology 101-050</h1>
+        <select id="quiz-select">
+          <option value="">Select Chapter</option>
+          <option value="quiz1">Chapter 1</option>
+          <option value="quiz2">Chapter 2</option>
+          <option value="quiz3">Chapter 3</option>
+          <option value="quiz4">Chapter 4</option>
+        </select>
+      </div>
+      <div class="quiz">
+        <h2 id="question">Question goes here</h2>
+        <div id="answer-buttons">
+          <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+          <button class="btn">Answer 4</button>
+        </div>
+        <!-- Here is Progress -->
+        <div class="container">
+          <div class="progress-circular">
+            <span class="value">0%</span>
+          </div>
+          <!-- .progress-circular -->
+          <!-- <div class="text">Enter Number</div>
+          <div class="btn2">
+            <input type="text" autofocus />
+            <button class="btn3">Enter</button>
+          </div> -->
+          <!-- .btn -->
+        </div>
+        <!--.container -->
+        <button id="next-btn">Next</button>
+      </div>
+    </div>
+
+    <script>
+      // const questions = [
+      //     {
+      //         question: 'Which is largest animal in the world?',
+      //         answers: [
+      //             { text: 'Elephant', correct: false },
+      //             { text: 'Blue Whale', correct: true },
+      //             { text: 'Giraffe', correct: false },
+      //             { text: 'Lion', correct: false }
+      //         ]
+      //     },
+      //     {
+      //         question: 'Which is smallest continent in the world?',
+      //         answers: [
+      //             { text: 'Asia', correct: false },
+      //             { text: 'Africa', correct: false },
+      //             { text: 'Australia', correct: true },
+      //             { text: 'Europe', correct: false }
+      //         ]
+      //     }
+      // ];
+
+      const questions = {
+        quiz1: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
+          {
+            question:
+              "Concepts for the Universe structure: The geocentric model of the Universe placed the Earth at the center of the Universe, while the heliocentric model placed the Sun at the center. So the two concepts are opposite to each other.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "The Milky Way galaxy contains > 300 billion of stars, and the whole Universe contains > 100 billion of galaxies.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "In the Solar System, which planets are Terrestrial Planets (i.e., with rocky bodies)?",
+            answers: [
+              { text: "Mercury, Venus, Earth, and Mars", correct: true },
+              { text: "Jupiter and Saturn", correct: false },
+              { text: "Uranus and Neptune", correct: false },
+            ],
+          },
+          {
+            question: "What is the starting time for the Universe expansion?",
+            answers: [
+              { text: "20.1 billion years ago", correct: false },
+              { text: "15.2 billion years ago", correct: false },
+              { text: "13.8 billion years ago", correct: true },
+              { text: "5.60 billion years ago", correct: false },
+            ],
+          },
+          {
+            question: "What is the universe expanding into?",
+            answers: [
+              { text: "A black hole", correct: false },
+              {
+                text: "If we live in an infinite universe, then the universe expands into nothing",
+                correct: false,
+              },
+              {
+                text: "If the universe is finite, then eventually it should reach a boundary",
+                correct: false,
+              },
+              { text: "A super universe", correct: false },
+              { text: "Both b and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Within minutes of the Big Bang, the first atoms of the Universe developed. What are these “first atoms”?",
+            answers: [
+              { text: "Oxygen", correct: false },
+              { text: "Carbon", correct: false },
+              { text: "Hydrogen", correct: false },
+              { text: "Helium", correct: false },
+              { text: "Both c and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "The first atoms of the universe (developed at the beginning of the Big Bang) formed vast gas clouds. Such clouds are called...",
+            answers: [
+              { text: "Supernova", correct: false },
+              { text: "Protostar", correct: false },
+              { text: "Nebulae", correct: false },
+              { text: "Stellar nucleosynthesis", correct: false },
+              { text: "Both c and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "The mechanism that helps nebulae to collapse into dense balls is...",
+            answers: [
+              { text: "Gravity", correct: true },
+              { text: "Pressure", correct: false },
+              { text: "Heat", correct: false },
+              { text: "Viscosity", correct: false },
+            ],
+          },
+          {
+            question:
+              "After the nebulae coalesced into a disk, what type of reactions helped the disk to transform to real stars?",
+            answers: [
+              { text: "Fusion reactions", correct: true },
+              { text: "Degradation reactions", correct: false },
+              { text: "Curing reactions", correct: false },
+              { text: "Bimolecular reactions", correct: false },
+            ],
+          },
+          {
+            question:
+              "90% of human body is made of stardust, because all the elements except for hydrogen and helium are created during the life cycle of stars.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "What is the relatively age between the Moon and the Earth?",
+            answers: [
+              { text: "The Moon is as old as the Earth", correct: false },
+              {
+                text: "The Moon is approximately 0.013 billion years older than the Earth",
+                correct: false,
+              },
+              {
+                text: "There is no theory or evidence to determine which one is older",
+                correct: false,
+              },
+              {
+                text: "The Moon is approximately 0.013 billion years younger than the Earth",
+                correct: true,
+              },
+            ],
+          },
+          {
+            question:
+              "Which of the following components belong to the Earth System?",
+            answers: [
+              { text: "Atmosphere", correct: false },
+              { text: "Hydrosphere", correct: false },
+              { text: "Biosphere", correct: false },
+              { text: "Lithosphere", correct: false },
+              { text: "Interior of Earth", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          // Continuing from the previous set...
+          {
+            question: "The Earth has a magnetic field that shields it from...",
+            answers: [
+              { text: "Meteorites", correct: false },
+              { text: "Sunspot radiation", correct: false },
+              { text: "Solar wind", correct: false },
+              { text: "Cosmic rays", correct: false },
+              { text: "Both c and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "In the Earth’s atmosphere, only 50% of atmospheric gas lies at elevations below 50 km",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "The atmosphere surrounding Earth can be subdivided into 4 layers: troposphere, stratosphere, mesosphere, and thermosphere.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "The surface of the Earth can be divided into land (30%) and ocean (70%). The deepest point on the ocean floor is the Challenger Deep, and the highest point on land is Mt. Everest.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "Most rocks on the Earth contain what type of material?",
+            answers: [
+              { text: "Organic chemicals", correct: false },
+              { text: "Melts", correct: false },
+              { text: "Quartz", correct: false },
+              { text: "Silica", correct: true },
+            ],
+          },
+          {
+            question:
+              "The Earth’s interior can be divided into three distinct layers. Which layer is the densest one?",
+            answers: [
+              { text: "Crust", correct: false },
+              { text: "Mantle", correct: false },
+              { text: "Core", correct: true },
+              { text: "They exhibit the similar density", correct: false },
+            ],
+          },
+          {
+            question:
+              "How does pressure and temperature change with the increase of depth in Earth?",
+            answers: [
+              { text: "They both increase with depth in Earth", correct: true },
+              {
+                text: "They increase with depth in Earth, and then remain stable",
+                correct: false,
+              },
+              {
+                text: "Pressure decreases, and temperature increases with depth in Earth",
+                correct: false,
+              },
+              {
+                text: "Pressure increases, and temperature decreases with depth in Earth",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "The rate at which temperature increases as depth increases is called...",
+            answers: [
+              { text: "The geothermal gradient", correct: true },
+              { text: "The crust constant", correct: false },
+              { text: "The thermal conductivity", correct: false },
+              { text: "The heat flux", correct: false },
+            ],
+          },
+          {
+            question:
+              "Although the mantle is almost solid, mantle rock is so hot that it is soft enough to flow with a speed of...",
+            answers: [
+              { text: "15 mm/yr", correct: false },
+              { text: "15 cm/yr", correct: true },
+              { text: "15 ft/yr", correct: false },
+              { text: "15 m/yr", correct: false },
+            ],
+          },
+          {
+            question: "The Earth’s core is made of...",
+            answers: [
+              { text: "Felsic rocks", correct: false },
+              { text: "Ultramafic rocks", correct: false },
+              { text: "Solid Iron", correct: false },
+              { text: "Iron alloy", correct: true },
+            ],
+          },
+          {
+            question:
+              "The Earth’s core can be divided into the outer and inner components. The outer core is liquid because of the high temperature, while the inner core is solid due to the even greater pressure.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "Which mechanism generates Earth’s magnetic field?",
+            answers: [
+              { text: "The very thin crust", correct: false },
+              { text: "The rocky upper mantle", correct: false },
+              { text: "The circulation of the outer core", correct: true },
+              { text: "The stable inner core", correct: false },
+            ],
+          },
+          {
+            question:
+              "The crust and the lower mantle comprise the rigid lithosphere.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "The asthenosphere consists of plastic mantle that can flow.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+        ],
+        quiz2: [
+          // {
+          //   question: "Which is the smallest continent in the world?",
+          //   answers: [
+          //     { text: "Asia", correct: false },
+          //     { text: "Africa", correct: false },
+          //     { text: "Australia", correct: true },
+          //     { text: "Europe", correct: false },
+          //   ],
+          // },
+          {
+            question:
+              "Plate “Tectonics”, from the Greek word “Tekton”, means that:",
+            answers: [
+              {
+                text: "plate movements “build” regional geologic features",
+                correct: false,
+              },
+              {
+                text: "plate tectonics is responsible for most of the features of our planet",
+                correct: false,
+              },
+              {
+                text: "plate boundaries can only construct, but not destroy, geologic features",
+                correct: false,
+              },
+              { text: "both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "Earth’s crust (or the Earth’s lithosphere) is broken into how many rigid plates that have various sizes and can move?",
+            answers: [
+              { text: "~ 10", correct: false },
+              { text: "~ 20", correct: true },
+              { text: "~ 50", correct: false },
+              { text: "~ 100", correct: false },
+            ],
+          },
+          {
+            question: "Who proposed first the Continental Drift Hypothesis?",
+            answers: [
+              { text: "Alfred Wagener", correct: true },
+              { text: "Harry Hess", correct: false },
+              { text: "James Hutton", correct: false },
+              { text: "Charles Darwin", correct: false },
+            ],
+          },
+          {
+            question:
+              "According the continental drift hypothesis, continents had once been joined together to form a single huge supercontinent called:",
+            answers: [
+              { text: "Rodinia", correct: false },
+              { text: "Pannotia", correct: false },
+              { text: "Pangaea", correct: true },
+              { text: "Caledonian", correct: false },
+            ],
+          },
+          {
+            question:
+              "Since Pangaea, the continents have drifted to their current location and then stopped drifting.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "What is Wegener’s evidence for continental drift?",
+            answers: [
+              {
+                text: "The correlation of coastlines and rock assemblages now on the opposite sides of the ocean",
+                correct: false,
+              },
+              {
+                text: "The distribution of late Paleozoic glaciers, climate belts, and fossil species",
+                correct: false,
+              },
+              { text: "Paleo-magnetism", correct: false },
+              { text: "All of the above", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "Rocks retain a record of the Earth’s magnetic field. This record is called:",
+            answers: [
+              { text: "paleo-magnetism", correct: true },
+              { text: "magnetic record", correct: false },
+              { text: "magnetic paleopole", correct: false },
+              { text: "magnetic declination", correct: false },
+            ],
+          },
+          {
+            question:
+              "What is the formation time of the magnetic field recorded by rocks?",
+            answers: [
+              { text: "The time of observation", correct: false },
+              {
+                text: "The time when the original magnetic field of the Earth formed",
+                correct: false,
+              },
+              {
+                text: "The time when the rock was in its original lava form",
+                correct: false,
+              },
+              { text: "The time when the rock formed", correct: true },
+            ],
+          },
+          {
+            question: "Paleomagnetism provides evidence for continental drift.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "The line that shows the successive positions of paleopoles in the past is called:",
+            answers: [
+              { text: "paleopole line", correct: false },
+              { text: "apparent polar-wander path", correct: true },
+              { text: "polar shift line", correct: false },
+              { text: "paleopole path", correct: false },
+            ],
+          },
+          {
+            question:
+              "The Mid-Ocean Ridge is a submarine mountain belt that forms along which plate boundary?",
+            answers: [
+              {
+                text: "a convergent continental plate boundary",
+                correct: false,
+              },
+              { text: "a convergent oceanic plate boundary", correct: false },
+              { text: "a divergent oceanic plate boundary", correct: true },
+              { text: "a stable oceanic plate boundary", correct: false },
+            ],
+          },
+          {
+            question: "Who is the discoverer of sea-floor spreading?",
+            answers: [
+              { text: "Alfred Wagener", correct: false },
+              { text: "Harry Hess", correct: true },
+              { text: "James Hutton", correct: false },
+              { text: "Charles Darwin", correct: false },
+            ],
+          },
+          {
+            question:
+              "What are the evidences used by Harry Hess to support the hypothesis of sea-floor spreading?",
+            answers: [
+              { text: "New rock near the ridge", correct: false },
+              { text: "Oldest rock near the ridge", correct: false },
+              { text: "Oldest rock farther away", correct: false },
+              { text: "Both a and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Which of the following properties are right for plate boundaries?",
+            answers: [
+              {
+                text: "When a plate moves, its internal area remains relatively rigid and intact",
+                correct: false,
+              },
+              {
+                text: "Rock along plate boundaries can undergoes intense deformation",
+                correct: false,
+              },
+              {
+                text: "Continent forms part of the plate, so that the continent moves with the plate",
+                correct: false,
+              },
+              { text: "All of the above", correct: true },
+              { text: "Both a and c", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following statements are right for the location of plate boundaries?",
+            answers: [
+              {
+                text: "The earthquake belts may define the position of plate boundaries",
+                correct: false,
+              },
+              {
+                text: "Most volcanoes occur along plate boundaries",
+                correct: false,
+              },
+              {
+                text: "The earthquake belts cannot define the position of plate boundaries, since most earthquakes occur in cratons",
+                correct: false,
+              },
+              { text: "Both b and c", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "Based on the relative motion of the two plates across the boundary, plate boundaries can be classified to which three types?",
+            answers: [
+              {
+                text: "conservative, destructive, and transform boundaries",
+                correct: false,
+              },
+              {
+                text: "divergent, convergent, and slide boundaries",
+                correct: false,
+              },
+              {
+                text: "divergent, convergent, and transform boundaries",
+                correct: true,
+              },
+              { text: "passive, active, and slide boundaries", correct: false },
+            ],
+          },
+          {
+            question: "Divergent plate boundary is a boundary where:",
+            answers: [
+              { text: "two plates move apart from each other", correct: true },
+              {
+                text: "two plates move toward each other (so that one plate sinks beneath the other)",
+                correct: false,
+              },
+              {
+                text: "two plates slide sideways past each other",
+                correct: false,
+              },
+              {
+                text: "two plates collide and then are sutured into a supercontinent",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question: "Convergent plate boundary is a boundary where:",
+            answers: [
+              { text: "two plates move apart from each other", correct: false },
+              {
+                text: "two plates move toward each other (so that one plate sinks beneath the other)",
+                correct: true,
+              },
+              {
+                text: "two plates slide sideways past each other",
+                correct: false,
+              },
+              {
+                text: "two plates collide and then are sutured into a supercontinent",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question: "Transform plate boundary is a boundary where:",
+            answers: [
+              { text: "two plates move apart from each other", correct: false },
+              {
+                text: "two plates move toward each other (so that one plate sinks beneath the other)",
+                correct: false,
+              },
+              {
+                text: "two plates slide sideways past each other",
+                correct: true,
+              },
+              {
+                text: "two plates collide and then are sutured into a supercontinent",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "What representative topography can be found at divergent plate boundaries?",
+            answers: [
+              { text: "Ridge/Rift", correct: true },
+              { text: "Trench", correct: false },
+              { text: "Continental volcanic arc", correct: false },
+              { text: "Fracture zones", correct: false },
+              { text: "Both b and c", correct: false },
+            ],
+          },
+          {
+            question:
+              "What effect for lithosphere can be found due to divergent plate boundaries?",
+            answers: [
+              {
+                text: "New crust, since oceanic lithosphere created",
+                correct: true,
+              },
+              {
+                text: "Oceanic lithosphere destroyed, after one oceanic plate sank into the mantle",
+                correct: false,
+              },
+              {
+                text: "Lithosphere neither created or destroyed",
+                correct: false,
+              },
+              { text: "Continental lithosphere created", correct: false },
+              { text: "Both a and d", correct: false },
+            ],
+          },
+          {
+            question:
+              "What type of earthquakes can occur due to the divergent plate boundary?",
+            answers: [
+              { text: "Only shallow earthquakes", correct: true },
+              { text: "Only deep earthquakes", correct: false },
+              { text: "Both shallow and deep earthquakes", correct: false },
+              { text: "No earthquakes observed", correct: false },
+            ],
+          },
+          {
+            question:
+              "What representative topography can be found at convergent plate boundaries?",
+            answers: [
+              { text: "Ridge/Rift", correct: false },
+              { text: "Trench", correct: false },
+              { text: "Continental volcanic arc", correct: false },
+              {
+                text: "No major effect, except for fracture zones",
+                correct: false,
+              },
+              { text: "Both b and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "What type of earthquakes can occur due to the convergent plate boundary?",
+            answers: [
+              { text: "Only shallow earthquakes", correct: false },
+              { text: "Only deep earthquakes", correct: false },
+              { text: "Only earthquakes within crust", correct: false },
+              { text: "Both shallow and deep earthquakes", correct: true },
+            ],
+          },
+          {
+            question:
+              "What effect for lithosphere can be found due to convergent plate boundaries?",
+            answers: [
+              { text: "Oceanic lithosphere created", correct: false },
+              {
+                text: "Oceanic lithosphere destroyed, after one oceanic plate sank into the mantle",
+                correct: true,
+              },
+              {
+                text: "Lithosphere neither created or destroyed",
+                correct: false,
+              },
+              { text: "Continental lithosphere created", correct: false },
+            ],
+          },
+          {
+            question: "Transform plate boundaries do not lead to volcanism.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "What representative topography can be found near transform plate boundaries?",
+            answers: [
+              { text: "Ridge/Rift", correct: false },
+              { text: "Trench", correct: false },
+              { text: "Continental volcanic arc", correct: false },
+              {
+                text: "No major effect, except for fracture zones",
+                correct: true,
+              },
+              { text: "Both b and c", correct: false },
+            ],
+          },
+          {
+            question:
+              "What effect for lithosphere can be found due to transform plate boundaries?",
+            answers: [
+              { text: "Oceanic lithosphere created", correct: false },
+              { text: "Oceanic lithosphere destroyed", correct: false },
+              {
+                text: "Lithosphere neither created nor destroyed",
+                correct: true,
+              },
+              { text: "Continental lithosphere created", correct: false },
+            ],
+          },
+          {
+            question:
+              "The place where three plate boundaries intersect is called:",
+            answers: [
+              { text: "a triple junction", correct: true },
+              { text: "a conservative plate boundary", correct: false },
+              { text: "a joint boundary", correct: false },
+              { text: "a node", correct: false },
+            ],
+          },
+          {
+            question:
+              "The north end of the San Andreas Fault is a triple junction that can be named as:",
+            answers: [
+              {
+                text: "a ridge-transform-transform triple junction",
+                correct: false,
+              },
+              {
+                text: "a trench-transform-transform triple junction",
+                correct: true,
+              },
+              {
+                text: "a trench-transform-ridge triple junction",
+                correct: false,
+              },
+              {
+                text: "a trench-ridge-transform triple junction",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "Places where volcanism occurs at an isolated volcano are called:",
+            answers: [
+              { text: "extinct volcanos", correct: false },
+              { text: "volcano acres", correct: false },
+              { text: "independent volcanos", correct: false },
+              { text: "hot spots", correct: true },
+            ],
+          },
+          {
+            question:
+              "As a plate moves over the hot spot, the volcano moves off and dies, and a new volcano forms over the hot spot. This process generates:",
+            answers: [
+              { text: "volcano islands", correct: false },
+              { text: "volcano acres", correct: false },
+              { text: "independent volcanos", correct: false },
+              { text: "hot-spot track", correct: true },
+            ],
+          },
+          {
+            question: "Hot spots are most likely caused by:",
+            answers: [
+              { text: "mantle plumes", correct: true },
+              { text: "volatile materials", correct: false },
+              { text: "transform plate boundaries", correct: false },
+              { text: "continental-continental collision", correct: false },
+            ],
+          },
+          {
+            question:
+              "How does a new divergent plate boundary come into existence?",
+            answers: [
+              {
+                text: "Most new divergent boundaries form when a continent splits and separates into two continents",
+                correct: false,
+              },
+              { text: "Due to the process called “rifting”", correct: false },
+              { text: "During the process of collision", correct: false },
+              { text: "All of the above", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "How does an existing convergent boundary eventually cease to exist?",
+            answers: [
+              {
+                text: "It dies when a piece of buoyant lithosphere moves into the subduction zone",
+                correct: false,
+              },
+              { text: "Due to the process called “rifting”", correct: false },
+              { text: "During the process of collision", correct: false },
+              { text: "All of the above", correct: false },
+              { text: "Both a and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Collisions yield some of the most spectacular mountains on the planet, including:",
+            answers: [
+              { text: "The Himalayas", correct: false },
+              { text: "The Alps", correct: false },
+              { text: "The Appalachian Mountain", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "Both a and c", correct: false },
+            ],
+          },
+          {
+            question: "Why do the plates move?",
+            answers: [
+              {
+                text: "Convention currents cause the splitting in the Earth’s crust along the mid-ocean ridges",
+                correct: false,
+              },
+              {
+                text: "The new material pushes the old farther away, thus causing the plates to move",
+                correct: false,
+              },
+              {
+                text: "External thermal such as sun radiation motivates a dynamic Earth",
+                correct: false,
+              },
+              { text: "All of the above", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "The rock cycle and plate tectonics are related, because processes controlled by plate tectonics result in the formation of certain rock types in particular areas.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "How fast do plates move on Earth today?",
+            answers: [
+              { text: "1 to 15 inch per year", correct: false },
+              { text: "1 to 15 foot per year", correct: false },
+              { text: "1 to 15 cm per year", correct: true },
+              { text: "1 to 15 meter per year", correct: false },
+            ],
+          },
+        ],
+        quiz3: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
+          {
+            question: "Why should we study minerals?",
+            answers: [
+              {
+                text: "Minerals make up the rocks and sediments, and therefore build our planet",
+                correct: false,
+              },
+              {
+                text: "Minerals provide energy resources (such as uranium)",
+                correct: false,
+              },
+              {
+                text: "Industrial minerals serve as the raw materials for manufacturing chemicals, concrete, and wall board",
+                correct: false,
+              },
+              {
+                text: "Beautiful forms of minerals can be used for jewelry",
+                correct: false,
+              },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "For a material to be called a mineral, what properties it must have?",
+            answers: [
+              { text: "Naturally occurring solid", correct: false },
+              { text: "Formed by geological processes", correct: false },
+              { text: "Has a crystalline structure", correct: false },
+              { text: "Has defined inorganic composition", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question: "Which of the following materials are mineral?",
+            answers: [
+              { text: "Quartz (SiO2)", correct: false },
+              { text: "Biotite (K(Mg,Fe)3(AlSi3O10)(OH)2)", correct: false },
+              { text: "Calcite (CaCO3)", correct: false },
+              { text: "Methane (CH4)", correct: false },
+              { text: "All of the above except d", correct: true },
+            ],
+          },
+          {
+            question:
+              "Man-made minerals are actually not real minerals but 'synthetic minerals'.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "The atoms in minerals are organized in a specific way called:",
+            answers: [
+              { text: "Chemical composition", correct: false },
+              { text: "Pattern", correct: false },
+              { text: "Atom sequence", correct: false },
+              { text: "Crystalline lattice", correct: false },
+              { text: "Both b and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "Table salt is not a mineral because it is an organic chemical.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "Sugar is not a mineral because it is an organic chemical.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "Atomic number is:",
+            answers: [
+              {
+                text: "Approximately the number of protons plus neutrons in an atom of an element",
+                correct: false,
+              },
+              {
+                text: "The number of protons in an atom of an element",
+                correct: true,
+              },
+              {
+                text: "Approximately the number of protons plus electrons in an atom of an element",
+                correct: false,
+              },
+              {
+                text: "The number of nucleus in an atom of an element",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question: "Atomic weight is:",
+            answers: [
+              {
+                text: "Approximately the number of protons plus neutrons in an atom of an element",
+                correct: true,
+              },
+              {
+                text: "The number of protons in an atom of an element",
+                correct: false,
+              },
+              {
+                text: "Approximately the number of protons plus electrons in an atom of an element",
+                correct: false,
+              },
+              {
+                text: "The number of nucleus in an atom of an element",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "Because of the pattern of atoms in a crystal structure, the structure has:",
+            answers: [
+              { text: "symmetry", correct: true },
+              { text: "non-symmetry", correct: false },
+              { text: "regularity", correct: false },
+              { text: "irregularity", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which one of the following materials can be separated without a chemical reaction?",
+            answers: [
+              { text: "Chemical solution", correct: false },
+              { text: "Mixture of compounds", correct: true },
+              { text: "Two chemical precipitations", correct: false },
+              { text: "All of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "The ability of a solid material to exist in more than one form or crystal structure is called:",
+            answers: [
+              { text: "Composition", correct: false },
+              { text: "Metamorphism", correct: false },
+              { text: "Crystallization", correct: false },
+              { text: "Polymorphism", correct: true },
+            ],
+          },
+          {
+            question: "Which of the following minerals are Polymorphs?",
+            answers: [
+              { text: "Diamond and Graphite", correct: true },
+              { text: "Quartz and Biotite", correct: false },
+              { text: "Halite and Salt", correct: false },
+              { text: "Garnet and Stibnite", correct: false },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "Polymorphs have the same composition but different crystalline structure.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "How do we identify minerals?",
+            answers: [
+              { text: "by observation", correct: false },
+              { text: "performing simple tests", correct: false },
+              { text: "examine primary diagnostic properties", correct: false },
+              { text: "all of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "Luster which is the appearance in reflected light contains the following categories:",
+            answers: [
+              { text: "Metallic luster", correct: false },
+              { text: "Glass luster", correct: false },
+              { text: "Nonmetallic luster", correct: false },
+              { text: "Jewelry luster", correct: false },
+              { text: "Both a and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Which of the following diagnostic properties is the least reliable in identifying a mineral?",
+            answers: [
+              { text: "Hardness", correct: false },
+              { text: "Streak", correct: false },
+              { text: "Color", correct: true },
+              { text: "Cleavage", correct: false },
+            ],
+          },
+          {
+            question:
+              "The streak of a mineral will always be the same as its color.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "In the Mohs Hardness Scale, fingernail has a hardness of:",
+            answers: [
+              { text: "1.0", correct: false },
+              { text: "2.5", correct: true },
+              { text: "5.0", correct: false },
+              { text: "9.0", correct: false },
+            ],
+          },
+          {
+            question: "Which minerals are the most common on Earth?",
+            answers: [
+              { text: "Calcite", correct: false },
+              { text: "Quartz", correct: false },
+              { text: "Silicate", correct: true },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following minerals belong to categories of Silicate minerals?",
+            answers: [
+              { text: "Mafic minerals", correct: false },
+              { text: "Dolomite minerals", correct: false },
+              { text: "Felsic minerals", correct: false },
+              { text: "None of the above", correct: false },
+              { text: "Both a and c", correct: true },
+            ],
+          },
+          {
+            question: "Which of the following minerals are Mafic Minerals?",
+            answers: [
+              { text: "Quartz", correct: false },
+              { text: "Biotite", correct: false },
+              { text: "Olivine", correct: false },
+              { text: "Both b and c", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question: "Which of the following minerals are Felsic Minerals?",
+            answers: [
+              { text: "Quartz", correct: false },
+              { text: "Feldspar", correct: false },
+              { text: "Olivine", correct: false },
+              { text: "Both b and c", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+        ],
+        quiz4: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
+          {
+            question:
+              "Page 115: The molten rock erupted from a volcano and reaching the Earth’s surface is called:",
+            answers: [
+              { text: "Granite", correct: false },
+              { text: "Magma", correct: false },
+              { text: "Pyroclastic", correct: false },
+              { text: "Lava", correct: true },
+            ],
+          },
+          {
+            question:
+              "Page 117: Which of the following factors can affect the formation of magmas?",
+            answers: [
+              { text: "Decrease of pressure", correct: false },
+              { text: "Addition of volatiles", correct: false },
+              { text: "Viscosity of the original rock", correct: false },
+              { text: "Heat transfer from rising magma", correct: false },
+              { text: "All of the above except c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Page 118 (Fig. 4.3): Which of the following conditions can lead to decompression melting?",
+            answers: [
+              { text: "Melting in the outer core", correct: false },
+              { text: "Melting in a mantle plume", correct: false },
+              { text: "Melting beneath a rift", correct: false },
+              { text: "Melting beneath a mid-ocean ridge", correct: false },
+              { text: "All of the above except a", correct: true },
+            ],
+          },
+          {
+            question:
+              "Page 117: What processes can cause rock to melt easier resulting in more magma?",
+            answers: [
+              {
+                text: "Lowering of the Pressure as magma rises",
+                correct: false,
+              },
+              {
+                text: "Increase of Volatile and Gases in magma",
+                correct: false,
+              },
+              { text: "Increase of Pressure as magma rises", correct: false },
+              { text: "Both a and b", correct: true },
+              { text: "Both a and c", correct: false },
+            ],
+          },
+          {
+            question:
+              "Page 117: Melting due to addition of volatiles is also called:",
+            answers: [
+              { text: "Decompression", correct: false },
+              { text: "Flux melting", correct: true },
+              { text: "Fusion", correct: false },
+              { text: "None of the above", correct: false },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "Page 118 (also Table 4.1): The four categories of Magma, from the hight content of silica to low content of silica are: ",
+            answers: [
+              {
+                text: "Felsic, Intermediate, Mafic, and Ultramafic magmas",
+                correct: true,
+              },
+              {
+                text: "Mafic, Intermediate, Felsic, and Ultramafic magmas",
+                correct: false,
+              },
+              {
+                text: "Ultramafic, Mafic, Intermediate, and Felsic magmas",
+                correct: false,
+              },
+              {
+                text: "Mafic, Felsic, Intermediate, and Ultramafic magmas",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "Page 118 (Please also see the Handout): Which type of magmas is the major constituent of continental crust?",
+            answers: [
+              { text: "Intermediate magma", correct: false },
+              { text: "Mafic magma", correct: false },
+              { text: "Felsic magma", correct: true },
+              { text: "Ultramafic magma", correct: false },
+            ],
+          },
+          {
+            question:
+              "Pages 118~120: Which of the following factors can change magma’s composition?",
+            answers: [
+              { text: "Source rock composition", correct: false },
+              { text: "Partial melting", correct: false },
+              { text: "Assimilation", correct: false },
+              { text: "Magma mixing", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "Pages 118~120: How can different magma compositions (i.e., felsic, intermediate, mafic) be produced?",
+            answers: [
+              {
+                text: "Magma assimilation (other rocks melt into magma)",
+                correct: false,
+              },
+              {
+                text: "Magma differentiation (crystal settling)",
+                correct: false,
+              },
+              { text: "Magma mixing (2 magma types mix)", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "Both a and c", correct: false },
+            ],
+          },
+          {
+            question:
+              "Page 120: Magma rises from depth to the Earth’s surface because of:",
+            answers: [
+              { text: "buoyancy", correct: false },
+              { text: "viscosity", correct: false },
+              { text: "volatile", correct: false },
+              { text: "pressure due to overlying rocks", correct: false },
+              { text: "Both a and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "Page 120: Which property of the molten rock (or melt) controls the speed of its flow?",
+            answers: [
+              { text: "density", correct: false },
+              { text: "viscosity", correct: true },
+              { text: "surface area", correct: false },
+              { text: "shape", correct: false },
+            ],
+          },
+          {
+            question:
+              "Page 120: Which conditions can affect viscosity of magma or lava?",
+            answers: [
+              {
+                text: "Viscosity decreases with an increase of temperature",
+                correct: false,
+              },
+              {
+                text: "Viscosity decreases with the addition of volatiles",
+                correct: false,
+              },
+              {
+                text: "Viscosity also depends on the rock composition",
+                correct: false,
+              },
+              { text: "All of the above", correct: true },
+              { text: "Only a and c", correct: false },
+            ],
+          },
+          {
+            question:
+              "Page 120: Felsic magma flows faster than Mafic magma, because the former has a smaller viscosity.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "Page 121: Magma intrusion cools faster for a deeper depth.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "Page 121: The rate of cooling for magma depends on the following conditions:",
+            answers: [
+              { text: "The volume of volatiles", correct: false },
+              { text: "The depth of intrusion", correct: false },
+              { text: "The shape and size of a magma body", correct: false },
+              {
+                text: "The presence of circulating groundwater",
+                correct: false,
+              },
+              { text: "All of the above except a", correct: true },
+            ],
+          },
+          {
+            question:
+              "Page 121: Magma cools faster for a larger surface (for a fixed volume) and/or a smaller magma body.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Page 123 (see also Fig. 4.9): In igneous intrusions, the tabular intrusion that cuts across pre-existing layering is called:",
+            answers: [
+              { text: "A dike", correct: true },
+              { text: "A sill", correct: false },
+              { text: "A laccolith", correct: false },
+              { text: "A batholith", correct: false },
+            ],
+          },
+          {
+            question:
+              "Page 124: According to Bowen’s Reaction Series, during freezing of molten rock, we can find:",
+            answers: [
+              {
+                text: "Different minerals may form at the same time",
+                correct: false,
+              },
+              {
+                text: "Same minerals may form at different times",
+                correct: false,
+              },
+              {
+                text: "Different minerals may form at different times",
+                correct: true,
+              },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "Page 124: When a mafic magma starts to freeze, which types of minerals will start to crystallize first?",
+            answers: [
+              { text: "Felsic minerals", correct: false },
+              { text: "Mafic minerals", correct: true },
+              { text: "Intermediate minerals", correct: false },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "Page 123: In igneous intrusions, the tabular intrusion that is parallel to previous layering beds is called:",
+            answers: [
+              { text: "A dike", correct: false },
+              { text: "A sill", correct: true },
+              { text: "A laccolith", correct: false },
+              { text: "A batholith", correct: false },
+            ],
+          },
+          {
+            question:
+              "Page 126: A “Batholith” Pluton is a relatively small tabular magma that cooled above the Earth’s surface.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "Page 123: In igneous intrusions, the intrusion with lens or mushroom-shaped mass is called:",
+            answers: [
+              { text: "A dike", correct: false },
+              { text: "A sill", correct: false },
+              { text: "A laccolith", correct: true },
+              { text: "A batholith", correct: false },
+            ],
+          },
+          {
+            question:
+              "Page 126: In igneous intrusions, the largest intrusive body with immense surface exposure and mass is called:",
+            answers: [
+              { text: "A dike", correct: false },
+              { text: "A sill", correct: false },
+              { text: "A laccolith", correct: false },
+              { text: "A batholith", correct: true },
+            ],
+          },
+          {
+            question:
+              "Please see Handout: Stock is a smaller remnant of a batholith.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Please see Handout: A lava dome is a circular mound-shaped protrusion resulting from the slow extrusion of viscous lava at a volcanic vent.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Please see Handout: Which of the following textures can describe the texture of igneous rocks?",
+            answers: [
+              { text: "Phaneritic", correct: false },
+              { text: "Aphanitic", correct: false },
+              { text: "Porphoritic", correct: false },
+              { text: "Glassy", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "Please see Handout: Phaneritic igneous rocks are fine-grained rocks because of the slow cooling process.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "Please see Handout: Aphanitic structure can usually be found in intrusive igneous rocks.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "Page 129: Geologists classify and assign names to igneous rocks based on texture and composition.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Pages 132-133: Igneous activity can be found in which of the following locations?",
+            answers: [
+              { text: "Mid-Ocean ridges", correct: false },
+              { text: "Subduction zones", correct: false },
+              { text: "Hot spot", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+        ],
+        quiz5: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz6: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz7: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz8: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz9: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz10: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz11: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz12: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz13: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz14: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz15: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz16: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz17: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz18: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+        quiz19: [
+          {
+            question: "Which is the largest animal in the world?",
+            answers: [
+              { text: "Elephant", correct: false },
+              { text: "Blue Whale", correct: true },
+              { text: "Giraffe", correct: false },
+              { text: "Lion", correct: false },
+            ],
+          },
+          // more questions...
+        ],
+      };
+
+      const questionElement = document.getElementById("question");
+      const answerButtons = document.getElementById("answer-buttons");
+      const nextButton = document.getElementById("next-btn");
+      const quizSelect = document.getElementById("quiz-select");
+
+      if (quizSelect.value === "") {
+        questionElement.textContent = "Select a chapter to start the test.";
+        answerButtons.style.display = "none";
+      }
+
+      // Progress
+      let progressCircular = document.querySelector(".progress-circular");
+      let btn = document.querySelector(".btn");
+      let input = document.querySelector("input");
+      let value = document.querySelector(".value");
+      let container = document.querySelector(".container");
+      let start = 0;
+
+      let currentQuizQuestions;
+      let currentQuestionIndex = 0;
+      let score = 0;
+
+      function startQuiz() {
+        answerButtons.style.display = "block";
+        container.style.display = "none";
+        const selectedQuiz = quizSelect.value;
+        currentQuizQuestions = questions[selectedQuiz];
+        currentQuestionIndex = 0;
+        score = 0;
+        nextButton.innerHTML = "Next";
+        showQuestions();
+      }
+      function showQuestions() {
+        resetState();
+        let currentQuestion = currentQuizQuestions[currentQuestionIndex];
+        let questionNo = currentQuestionIndex + 1;
+        questionElement.innerHTML =
+          questionNo + ". " + currentQuestion.question;
+
+        currentQuestion.answers.forEach((answer) => {
+          const button = document.createElement("button");
+          button.innerHTML = answer.text;
+          button.classList.add("btn");
+          answerButtons.appendChild(button);
+          if (answer.correct) {
+            button.dataset.correct = answer.correct;
+          }
+          button.addEventListener("click", selectAnswer);
+        });
+      }
+
+      function resetState() {
+        nextButton.style.display = "none";
+        questionElement.innerHTML = "Select a chapter to start the test.";
+        while (answerButtons.firstChild) {
+          answerButtons.removeChild(answerButtons.firstChild);
+        }
+      }
+
+      function selectAnswer() {
+        const selectedButton = event.target;
+        const isCorrect = selectedButton.dataset.correct === "true";
+        if (isCorrect) {
+          selectedButton.classList.add("correct");
+          score++;
+        } else {
+          selectedButton.classList.add("incorrect");
+        }
+        Array.from(answerButtons.children).forEach((button) => {
+          if (button.dataset.correct === "true") {
+            button.classList.add("correct");
+          }
+          button.disabled = true;
+        });
+        nextButton.style.display = "block";
+      }
+
+      function showScore() {
+        resetState();
+        questionElement.innerHTML = `Your score is ${score} out of ${currentQuizQuestions.length}!`;
+        nextButton.innerHTML = "Play Again";
+        nextButton.style.display = "block";
+
+        // Progress
+
+        container.style.display = "flex";
+        let progress = setInterval(() => {
+          if (start < (score / currentQuizQuestions.length) * 100) {
+            start++;
+            progressEnd();
+          } else {
+            start--;
+            progressEnd();
+          }
+
+          function progressEnd() {
+            value.textContent = `${start}%`;
+            progressCircular.style.background = `conic-gradient(#001e4d ${
+              start * 3.6
+            }deg, #ededed 0deg)`;
+            if (start == (score / currentQuizQuestions.length) * 100) {
+              clearInterval(progress);
+              // input.value = "";
+            }
+          }
+        }, 25);
+      }
+
+      function handleNextButton() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentQuizQuestions.length) {
+          showQuestions();
+        } else {
+          showScore();
+        }
+      }
+
+      nextButton.addEventListener("click", () => {
+        if (currentQuestionIndex < currentQuizQuestions.length) {
+          handleNextButton();
+        } else {
+          startQuiz();
+        }
+      });
+
+      quizSelect.addEventListener("change", startQuiz);
+      // startQuiz();
+    </script>
+  </body>
+</html>
