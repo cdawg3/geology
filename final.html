@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Geology 101-050</title>
+    <title>Geology Tester</title>
     <style>
       * {
         margin: 0;
@@ -13,8 +13,9 @@
       }
 
       body {
-        background: #001e4d;
-        /* background: #9E1B32; */
+        /* background: #001e4d; */
+        /* background: #15616d; */
+        background: #1f5673;
       }
 
       .app {
@@ -22,13 +23,16 @@
         width: 90%;
         max-width: 600px;
         margin: 100px auto 0;
+        border: 1px solid #1f5673;
+        /* border: 1px solid #001e4d; */
         border-radius: 10px;
         padding: 30px;
       }
 
       .app h1 {
         font-size: 25px;
-        color: #001e4d;
+        color: #1f5673;
+        /* color: #001e4d; */
         /* color: #222; */
         font-weight: 600;
         /* border-bottom: 1px solid #333;
@@ -41,7 +45,8 @@
 
       .quiz h2 {
         font-size: 18px;
-        color: #001e4d;
+        color: #1f5673;
+        /* color: #001e4d; */
         /* color: #222; */
         font-weight: 600;
       }
@@ -61,7 +66,8 @@
       }
 
       .btn:hover:not([disabled]) {
-        background: #001e4d;
+        background: #1f5673;
+        /* background: #001e4d; */
         /* background: #9E1B32; */
         color: #fff;
       }
@@ -72,7 +78,8 @@
       }
 
       #next-btn {
-        background: #001e4d;
+        background: #1f5673;
+        /* background: #001e4d; */
         /* background: #9E1B32; */
         color: #fff;
         font-weight: 500;
@@ -119,7 +126,8 @@
       }
 
       #quiz-select:hover {
-        background: #001e4d;
+        /* background: #001e4d; */
+        background: #1f5673;
         color: #fff;
       }
 
@@ -128,7 +136,8 @@
       }
 
       #quiz-select option::selection {
-        background: #001e4d;
+        background: #1f5673;
+        /* background: #001e4d; */
         color: #fff;
         cursor: pointer;
       }
@@ -153,7 +162,8 @@
         width: 250px;
         height: 250px;
         border-radius: 50%;
-        background: conic-gradient(#001e4d 0deg, #ededed 0deg);
+        background: conic-gradient(#1f5673 0deg, #ededed 0deg);
+        /* background: conic-gradient(#001e4d 0deg, #ededed 0deg); */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -171,14 +181,16 @@
       .value {
         font-size: 60px;
         font-weight: 600;
-        color: #001e4d;
+        color: #1f5673;
+        /* color: #001e4d; */
         z-index: 9;
       }
 
       .text {
         font-size: 25px;
         font-weight: 600;
-        color: #001e4d;
+        color: #1f5673;
+        /* color: #001e4d; */
         margin: 20px 0;
       }
 
@@ -192,33 +204,45 @@
         position: relative;
         width: 100%;
         height: 50px;
-        border: 1px solid #001e4d;
+        border: 1px solid #1f5673;
+        /* border: 1px solid #001e4d; */
         border-radius: 10px 10px 0 0;
         outline: none;
         text-align: center;
         font-size: 25px;
         font-weight: 600;
-        color: #001e4d;
+        color: #1f5673;
+        /* color: #001e4d; */
       }
 
       .btn3 {
         border-radius: 0 0 10px 10px;
         outline: none;
-        background: #001e4d;
+        background: #1f5673;
+        /* background: #001e4d; */
         color: #fff;
         font-size: 18px;
         border: none;
       }
 
       .btn3:active {
-        color: #001e4d;
+        color: #1f5673;
+        /* color: #001e4d; */
         background: #fff;
       }
 
       @media screen and (max-width: 500px) {
+        /* body {
+          background-image: url("./images/8140.jpg");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        } */
+
         .app h1 {
           font-size: 16px;
-          color: #001e4d;
+          color: #1f5673;
+          /* color: #001e4d; */
           /* color: #222; */
           font-weight: 600;
           /* border-bottom: 1px solid #333;
@@ -227,7 +251,8 @@
 
         .quiz h2 {
           font-size: 16px;
-          color: #001e4d;
+          color: #1f5673;
+          /* color: #001e4d; */
           /* color: #222; */
           font-weight: 600;
         }
@@ -249,9 +274,13 @@
           <option value="quiz6">Chapter 6</option>
           <option value="quiz7">Chapter 7</option>
           <option value="quiz8">Chapter 8</option>
+          <option value="quiz9">Chapter 9</option>
           <option value="quiz10">Chapter 10</option>
           <option value="quiz11">Chapter 11</option>
+          <option value="quiz13">Chapter 13</option>
+          <option value="quiz14">Chapter 14</option>
           <option value="quiz15">Chapter 15</option>
+          <option value="randomQuiz">Final</option>
         </select>
       </div>
       <div class="quiz">
@@ -3381,16 +3410,454 @@
           },
         ],
         quiz9: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
           {
-            question: "Which is the largest animal in the world?",
+            question:
+              "Deformation denotes the change in the shape, position, or orientation of a material, by bending, breaking, or flowing.",
             answers: [
-              { text: "Elephant", correct: false },
-              { text: "Blue Whale", correct: true },
-              { text: "Giraffe", correct: false },
-              { text: "Lion", correct: false },
+              { text: "True", correct: true },
+              { text: "False", correct: false },
             ],
           },
-          // more questions...
+          {
+            question:
+              "Which of the actions belong to the components of deformation?",
+            answers: [
+              { text: "Displacement", correct: false },
+              { text: "Rotation", correct: false },
+              { text: "Evaporation", correct: false },
+              { text: "Distortion", correct: false },
+              { text: "Both a, b, and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "Which of following geologic structures can be produced by the deformation of rocks?",
+            answers: [
+              { text: "Joints", correct: false },
+              { text: "Faults", correct: false },
+              { text: "Folds", correct: false },
+              { text: "Foliation", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "Elastic deformation means that, before exceeding the elastic limit, rock can:",
+            answers: [
+              { text: "flow", correct: false },
+              { text: "fracture", correct: false },
+              {
+                text: "only slightly change its size and/or shape because the stress is not large enough to make any further deformation",
+                correct: false,
+              },
+              {
+                text: "return to its original size and shape when the stress is removed",
+                correct: true,
+              },
+              { text: "Both c and d", correct: false },
+            ],
+          },
+          {
+            question:
+              "The cracking and fracturing of a material subjected to stress is called:",
+            answers: [
+              { text: "Elastic deformation", correct: false },
+              { text: "Ductile deformation", correct: false },
+              { text: "Brittle deformation", correct: true },
+              { text: "Plastic deformation", correct: false },
+            ],
+          },
+          {
+            question:
+              "The bending and flowing of a material (without cracking and breaking) subjected to stress is called:",
+            answers: [
+              { text: "Ductile deformation", correct: false },
+              { text: "Brittle deformation", correct: false },
+              { text: "Elastic deformation", correct: false },
+              { text: "Plastic deformation", correct: false },
+              { text: "Both a and d", correct: true },
+            ],
+          },
+          {
+            question: "The behavior of rock deformation depends on:",
+            answers: [
+              { text: "Temperature", correct: false },
+              { text: "Pressure", correct: false },
+              { text: "Deformation rate", correct: false },
+              { text: "Composition", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "A sudden change in shape causes ductile deformation, while a slow change in shape causes brittle deformation.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "What is the depth for the brittle-ductile transition?",
+            answers: [
+              { text: "1~2 km", correct: false },
+              { text: "4~5 km", correct: false },
+              { text: "9~10 km", correct: false },
+              { text: "10 ~ 15 km", correct: true },
+            ],
+          },
+          {
+            question:
+              "Stress is the force applied per unit area which the force acts. Which of the following forces are stresses?",
+            answers: [
+              { text: "Rotation stress", correct: false },
+              { text: "Compressional stress", correct: false },
+              { text: "Tensional stress", correct: false },
+              { text: "Shear stress", correct: false },
+              { text: "Both b, c, and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "Strain refers to a change in shape of a rock, and therefore, strain is caused by stress.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following statements are right to describe the relationship between Stress and Strain?",
+            answers: [
+              { text: "Compression causes shortening", correct: false },
+              { text: "Tension causes stretching", correct: false },
+              { text: "Shear stress causes shear strain", correct: false },
+              { text: "Both a and c", correct: false },
+              { text: "Both a, b, and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "There are three types of strain, depending on the response of rocks to stress. With the increase of stress, the corresponding strain is:",
+            answers: [
+              {
+                text: "Elastic strain, Plastic strain, and Fracture",
+                correct: true,
+              },
+              {
+                text: "Ductile strain, Plastic strain, and Fracture",
+                correct: false,
+              },
+              {
+                text: "Elastic strain, Brittle strain, and Plastic strain",
+                correct: false,
+              },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "Joints are fractures with no movement, and usually they cannot occur in groups.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "A mineral-filled crack is called:",
+            answers: [
+              { text: "A fault", correct: false },
+              { text: "A fissure", correct: false },
+              { text: "A vein", correct: true },
+              { text: "A joint", correct: false },
+            ],
+          },
+          {
+            question:
+              "Veins may look like white stripes cutting across a body of rock.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "Which of the following are the main types of faults?",
+            answers: [
+              { text: "Convergent faults", correct: false },
+              { text: "Dip-Slip and strike-slip faults", correct: false },
+              { text: "Oblique-Slip faults", correct: false },
+              { text: "Both b and c", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "On a dip-slip fault, movement of walls is perpendicular to the dip line.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "The two sub-types of faults for strike-slip faults are right-lateral and left-lateral faults. The right-lateral strike-slip fault means that, if looking across the fault line, the order side moves along:",
+            answers: [
+              { text: "the strike direction", correct: false },
+              { text: "right", correct: true },
+              { text: "left", correct: false },
+              { text: "the dip direction", correct: false },
+            ],
+          },
+          {
+            question: "Which of the following are the main types of folds?",
+            answers: [
+              { text: "Anticline", correct: false },
+              { text: "Multicline", correct: false },
+              { text: "Syncline", correct: false },
+              { text: "MonoCline", correct: false },
+              { text: "Both a, c, and d", correct: true },
+            ],
+          },
+          {
+            question: "In an anticline, the age of the center of fold is:",
+            answers: [
+              { text: "the youngest", correct: false },
+              { text: "the middle", correct: false },
+              { text: "the oldest", correct: true },
+              { text: "the mixture of young and old", correct: false },
+            ],
+          },
+          {
+            question: "In a syncline, the age of the center of fold is:",
+            answers: [
+              { text: "the youngest", correct: true },
+              { text: "the middle", correct: false },
+              { text: "the oldest", correct: false },
+              { text: "the mixture of young and old", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following layering in rocks are Tectonic Foliation?",
+            answers: [
+              { text: "Slaty cleavage", correct: false },
+              { text: "Schistocity", correct: false },
+              { text: "Gneissic banding", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "Tectonic foliation forms when grains flatten, rotate, or grow so that they align parallel with one another.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Mountains can be built in which of the following geological settings?",
+            answers: [
+              {
+                text: "Subduction or convergent plate boundaries",
+                correct: false,
+              },
+              { text: "Transform plate boundaries", correct: false },
+              {
+                text: "Zones of continental collision or Continental rift areas",
+                correct: false,
+              },
+              { text: "Both a and c", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "Compressional stresses at convergent plate boundaries can cause:",
+            answers: [
+              { text: "Crustal uplift", correct: false },
+              { text: "Fold-thrust belt", correct: false },
+              { text: "Accretion", correct: false },
+              { text: "Crustal root", correct: false },
+              { text: "Both a, b, and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Compressional stresses during continental collision can cause:",
+            answers: [
+              {
+                text: "Crustal thickening and tectonic foliation",
+                correct: false,
+              },
+              { text: "Fold-thrust belt", correct: false },
+              { text: "High-grade metamorphism", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "Compression during either subduction or continental collision can develop similar geologic structures such as:",
+            answers: [
+              { text: "Crustal uplift or thickening", correct: false },
+              { text: "Fold-thrust belt", correct: false },
+              { text: "Orogenic collapse", correct: false },
+              { text: "Both a and b", correct: true },
+              { text: "Both a and c", correct: false },
+            ],
+          },
+          {
+            question:
+              "During continental rifting where continents are splitting in two, stretching stresses can cause:",
+            answers: [
+              { text: "Tectonic foliation", correct: false },
+              { text: "Fold-thrust belt", correct: false },
+              {
+                text: "Normal faults and fault-block mountains",
+                correct: true,
+              },
+              { text: "Both a and c", correct: false },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "During orogeny, what kinds of igneous activity can occur?",
+            answers: [
+              {
+                text: "At transform boundaries, melting may take place where deep portions of the crust undergo heating",
+                correct: false,
+              },
+              {
+                text: "In convergent plate boundaries, melting takes place in the mantle above the subducting plate",
+                correct: false,
+              },
+              {
+                text: "In rifts, stretching and thinning of lithosphere causes decompression melting (i.e., melting due to the decrease of pressure) of the mantle",
+                correct: false,
+              },
+              {
+                text: "During continental collision, melting may take place where deep portions of the crust undergo heating",
+                correct: false,
+              },
+              { text: "Both b, c, and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "Metamorphism during orogeny includes the contact metamorphism aureole and regional metamorphism.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "The Global Positioning System (GPS) can specify location change as small as 2 mm.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "With modern technology such as the Global Positioning System (GPS), geologists still cannot accurately measure the slow shortening and uplift of mountains because these processes occur at a very small speed.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "The condition that exists when the buoyancy force pushing lithosphere up equals the gravitational force pulling lithosphere down is called:",
+            answers: [
+              { text: "Isostasy", correct: false },
+              { text: "Counter balance", correct: false },
+              { text: "Equivalence", correct: false },
+              { text: "Isostatic equilibrium", correct: false },
+              { text: "Both a and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "Which of the following processes can cause land surface uplift (i.e., build mountains)?",
+            answers: [
+              {
+                text: "During collisional orogeny or convergent-margin orogeny, horizontal compression causes the crust to thicken vertically",
+                correct: false,
+              },
+              {
+                text: "Adding igneous rock to the crust (i.e., volcano eruption or magma intrusion) can generate mountains",
+                correct: false,
+              },
+              {
+                text: "Removal of lithospheric mantle from the base of a plate will cause the remaining lithosphere to rise to form mountains",
+                correct: false,
+              },
+              {
+                text: "In rifts, hot asthenosphere rises and heats the lithosphere, resulting in uplift of the lithosphere.",
+                correct: false,
+              },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "Mountain belts may eventually collapse under their own weight. This is called “Orogenic Collapse”.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "The process (involving uplift and erosion) that returns deeply buried rocks to the Earth surface is called:",
+            answers: [
+              { text: "Unroofing", correct: false },
+              { text: "Accretion", correct: false },
+              { text: "Erosion", correct: false },
+              { text: "Exhumation", correct: false },
+              { text: "Both a and d", correct: true },
+            ],
+          },
+          {
+            question:
+              "When a difference in elevation between one location and an adjacent one develops, what force begins to drive erosion?",
+            answers: [
+              { text: "Pressure", correct: false },
+              { text: "Gravity", correct: true },
+              { text: "Weathering", correct: false },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "Craton is a long-lived block of durable continental crust commonly found at the edge of a stable continent.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "Cratons can be divided into what types of provinces?",
+            answers: [
+              { text: "Cratonic basement", correct: false },
+              { text: "Cratonic roof", correct: false },
+              { text: "Shields", correct: false },
+              { text: "Cratonic platforms", correct: false },
+              { text: "Both c and d", correct: true },
+            ],
+          },
         ],
         quiz10: [
           // {
@@ -3989,16 +4456,387 @@
           // more questions...
         ],
         quiz13: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
           {
-            question: "Which is the largest animal in the world?",
+            question: "Mass movement is also called:",
             answers: [
-              { text: "Elephant", correct: false },
-              { text: "Blue Whale", correct: true },
-              { text: "Giraffe", correct: false },
-              { text: "Lion", correct: false },
+              { text: "Rockslide", correct: false },
+              { text: "Mass Wasting", correct: true },
+              { text: "Mass Flowing", correct: false },
+              { text: "Earthflow", correct: false },
             ],
           },
-          // more questions...
+          {
+            question:
+              "Mass movement refers to the downslope movement of rock and soil under:",
+            answers: [
+              { text: "Pressure", correct: false },
+              { text: "Friction", correct: false },
+              { text: "Gravity", correct: true },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "Mass movement can play a role in which of the following environments?",
+            answers: [
+              {
+                text: "Plays a critical role in the Rock Cycle (- it is the first step in the transportation of sediment)",
+                correct: false,
+              },
+              {
+                text: "Affects the evolution of landscapes (- it is the most rapid mean of modifying the shapes of slopes)",
+                correct: false,
+              },
+              {
+                text: "Mass movement & Running water can produce stream valleys",
+                correct: false,
+              },
+              { text: "All of the above", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "Slopes can change through time, and a minimum angle is required for mass movement to occur.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "Mass movement occurs when:",
+            answers: [
+              {
+                text: "the normal force of gravity is larger than the resistance force",
+                correct: false,
+              },
+              {
+                text: "the normal force of gravity is smaller than the resistance force",
+                correct: false,
+              },
+              {
+                text: "the downslope force of gravity is larger than the resistance force",
+                correct: true,
+              },
+              {
+                text: "the downslope force of gravity is smaller than the resistance force",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "If the slope angle increases, the downslope force due to gravity increases, and then the block may start to move if the downslope force is large enough.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following factors can be triggers of mass movement?",
+            answers: [
+              { text: "Water", correct: false },
+              { text: "Removal of anchoring vegetation", correct: false },
+              { text: "Earthquakes", correct: false },
+              { text: "Volcanic eruption", correct: false },
+              { text: "All of the above", correct: true },
+            ],
+          },
+          {
+            question: "Water increases the chance for mass movement by:",
+            answers: [
+              {
+                text: "diminishing particle cohesion (and therefore decreasing fraction)",
+                correct: false,
+              },
+              {
+                text: "adding weights (and therefore increasing the downslope force)",
+                correct: false,
+              },
+              { text: "changing the stable slope angle", correct: false },
+              { text: "both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "The steepest slope at which a slope of unconsolidated material can remain without collapsing is called:",
+            answers: [
+              { text: "Angle of strike", correct: false },
+              { text: "Angle of slide", correct: false },
+              { text: "Angle of repose", correct: true },
+              { text: "Angle of dip", correct: false },
+            ],
+          },
+          {
+            question:
+              "The angle of repose depends partly on the following factors:",
+            answers: [
+              { text: "Shape of grains", correct: false },
+              { text: "Size of grains", correct: false },
+              { text: "Weight of grains", correct: false },
+              { text: "Both a and c", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "What is the range of the angle of repose for most dry, unconsolidated materials (such as dry sand)?",
+            answers: [
+              { text: "0º  ~ 10º", correct: false },
+              { text: "15º ~ 20º", correct: false },
+              { text: "30º ~ 37º", correct: true },
+              { text: "50º ~ 60º", correct: false },
+            ],
+          },
+          {
+            question:
+              "What are the most common triggering mechanisms for mass movement?",
+            answers: [
+              { text: "Earthquakes", correct: false },
+              {
+                text: "Excessive water from a winter snow melt or a heavy rain storm",
+                correct: false,
+              },
+              { text: "Deforestation", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question: "Landslides cannot occur without triggers.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question: "Generally, each mass-movement event is classified by:",
+            answers: [
+              { text: "the type of material involved", correct: false },
+              { text: "the type of motion", correct: false },
+              { text: "the velocity of the movement", correct: false },
+              {
+                text: "the environment where the movement takes place",
+                correct: false,
+              },
+              { text: "all of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "The types of material involved in mass movements include:",
+            answers: [
+              { text: "mud", correct: false },
+              { text: "regolith", correct: false },
+              { text: "rock", correct: false },
+              { text: "snow and ice", correct: false },
+              { text: "all of the above", correct: true },
+            ],
+          },
+          {
+            question:
+              "The slow, gradual downslope movement of regolith on a slope is called:",
+            answers: [
+              { text: "Creep", correct: true },
+              { text: "Slump", correct: false },
+              { text: "Debris flow", correct: false },
+              { text: "Mudslide", correct: false },
+            ],
+          },
+          {
+            question: "Soil creep happens when:",
+            answers: [
+              {
+                text: "a mass of rock or unconsolidated material moves slowly as a unit along a curved surface",
+                correct: false,
+              },
+              {
+                text: "regolith alternately expands and contracts",
+                correct: true,
+              },
+              {
+                text: "a slurry of mud moves along hillslopes",
+                correct: false,
+              },
+              { text: "all of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "What of the following phenomena are visible effects of creep?",
+            answers: [
+              {
+                text: "Trees, fence, walls, and foundations built on a hillside to tilt downslope",
+                correct: false,
+              },
+              { text: "Tension cracks on highway", correct: false },
+              { text: "Volcano eruption", correct: false },
+              { text: "All of the above", correct: false },
+              { text: "both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "In the process of creep, the velocity of the downhill movement of soil or rock is:",
+            answers: [
+              { text: "Extremely slow", correct: true },
+              { text: "Moderately slow", correct: false },
+              { text: "Moderately fast", correct: false },
+              { text: "Very fast", correct: false },
+            ],
+          },
+          {
+            question:
+              "Solifluction is a specific creep and it can occur on gentle slopes.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "Solifluction usually occurs in the following region:",
+            answers: [
+              { text: "Subsidence of a basin", correct: false },
+              { text: "Floodplain", correct: false },
+              { text: "Regions underlain by permafrost", correct: true },
+              { text: "Regions with oversteepened slopes", correct: false },
+            ],
+          },
+          {
+            question: "Slump is best described as:",
+            answers: [
+              { text: "An Earth flow", correct: false },
+              { text: "Creep movement", correct: false },
+              {
+                text: "A rotational slide along a curved surface",
+                correct: true,
+              },
+              { text: "A debris flow", correct: false },
+            ],
+          },
+          {
+            question: "Slump usually occurs in the following region:",
+            answers: [
+              { text: "Subsidence of a basin", correct: false },
+              { text: "Floodplain", correct: false },
+              { text: "Regions underlain by permafrost", correct: false },
+              { text: "Regions with oversteepened slopes", correct: true },
+            ],
+          },
+          {
+            question:
+              "Failure surface is a weak surface that forms the base of a landslide.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Slump can be characterized by the slump block rotating along the following direction:",
+            answers: [
+              { text: "Anticlockwise direction", correct: true },
+              { text: "Clockwise direction", correct: false },
+              {
+                text: "Both anticlockwise and clockwise directions",
+                correct: false,
+              },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question: "Debris flow has the following properties:",
+            answers: [
+              {
+                text: "Serious hazard in dry areas with heavy rains",
+                correct: false,
+              },
+              {
+                text: "Consisting of soil and weathered soil, with large amount of water",
+                correct: false,
+              },
+              { text: "Often confined to channels", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "The speed of mud movement depends on the slope angle and on the water content.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Mudflow consisting of volcanic ash and water from the snow, ice, or rains is called:",
+            answers: [
+              { text: "Creep", correct: false },
+              { text: "Lahar", correct: true },
+              { text: "Slump", correct: false },
+              { text: "Solifluction", correct: false },
+            ],
+          },
+          {
+            question:
+              "Compared to Debris flow, Mudflow is different because Mudflow:",
+            answers: [
+              { text: "Composed of smaller-sized particles", correct: false },
+              {
+                text: "Rarely confined to preexisting channels",
+                correct: false,
+              },
+              { text: "Can transport larger objects", correct: false },
+              { text: "all of the above", correct: true },
+              { text: "both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "Mudflow is less viscous than Debris flow, and therefore the mudflow moves faster than Debris flow.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "The most spectacular underwater landslides occur on the flanks of submarine volcanoes.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following engineering techniques can help to prevent mass movements?",
+            answers: [
+              { text: "Removing subsurface water", correct: false },
+              { text: "Retaining walls and rock bolts", correct: false },
+              { text: "both a and b", correct: true },
+              { text: "none of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "A map where regions are ranked according to the likelihood that a mass movement will occur is called:",
+            answers: [
+              { text: "Failure likelihood map", correct: false },
+              { text: "Mass-movement risk map", correct: false },
+              { text: "Landslide-potential map", correct: true },
+              { text: "none of the above", correct: false },
+            ],
+          },
         ],
         quiz14: [
           {
@@ -4543,12 +5381,46 @@
         answerButtons.style.display = "block";
         container.style.display = "none";
         const selectedQuiz = quizSelect.value;
-        currentQuizQuestions = questions[selectedQuiz];
+        // currentQuizQuestions = questions[selectedQuiz];
+        if (selectedQuiz === "randomQuiz") {
+          // Generate random quiz
+          currentQuizQuestions = generateRandomQuiz();
+        } else {
+          currentQuizQuestions = questions[selectedQuiz];
+        }
         currentQuestionIndex = 0;
         score = 0;
         nextButton.innerHTML = "Next";
         showQuestions();
       }
+
+      function generateRandomQuiz() {
+        let randomQuiz = [];
+        let numQuestions = 3; // Number of questions to select from each quiz
+
+        for (let quiz in questions) {
+          let selectedQuestions = getRandom(questions[quiz], numQuestions);
+          randomQuiz.push(...selectedQuestions);
+        }
+
+        return randomQuiz;
+      }
+
+      function getRandom(arr, n) {
+        let result = [];
+        let len = arr.length;
+        let taken = new Array(len);
+
+        if (n > len) n = len; // If more elements are requested than available, reduce the number to the available amount
+
+        while (n--) {
+          let x = Math.floor(Math.random() * len);
+          result[n] = arr[x in taken ? taken[x] : x];
+          taken[x] = --len in taken ? taken[len] : len;
+        }
+        return result;
+      }
+
       function showQuestions() {
         resetState();
         let currentQuestion = currentQuizQuestions[currentQuestionIndex];
@@ -4614,7 +5486,7 @@
 
           function progressEnd() {
             value.textContent = `${start}%`;
-            progressCircular.style.background = `conic-gradient(#001e4d ${Math.round(
+            progressCircular.style.background = `conic-gradient(#1F5673 ${Math.round(
               start * 3.6
             )}deg, #ededed 0deg)`;
             if (
