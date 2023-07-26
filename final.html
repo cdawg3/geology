@@ -281,6 +281,7 @@
           <option value="quiz14">Chapter 14</option>
           <option value="quiz15">Chapter 15</option>
           <option value="quiz17">Chapter 17</option>
+          <option value="exam3">Exam 3</option>
           <option value="randomQuiz">Final</option>
         </select>
       </div>
@@ -6142,6 +6143,8 @@
         if (selectedQuiz === "randomQuiz") {
           // Generate random quiz
           currentQuizQuestions = generateRandomQuiz();
+        } else if (selectedQuiz === "exam3") {
+          currentQuizQuestions = generateExam3Quiz();
         } else {
           currentQuizQuestions = questions[selectedQuiz];
         }
@@ -6161,6 +6164,19 @@
         }
 
         return randomQuiz;
+      }
+
+      function generateExam3Quiz() {
+        let exam3Quiz = [];
+        let numQuestions = 10; // Number of questions to select from each quiz
+        let quizzes = ["quiz9", "quiz13", "quiz14", "quiz15", "quiz17"]; // The quizzes for Exam 3
+
+        for (let quiz of quizzes) {
+          let selectedQuestions = getRandom(questions[quiz], numQuestions);
+          exam3Quiz.push(...selectedQuestions);
+        }
+
+        return exam3Quiz;
       }
 
       function getRandom(arr, n) {
