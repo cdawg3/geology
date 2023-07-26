@@ -280,6 +280,7 @@
           <option value="quiz13">Chapter 13</option>
           <option value="quiz14">Chapter 14</option>
           <option value="quiz15">Chapter 15</option>
+          <option value="quiz17">Chapter 17</option>
           <option value="randomQuiz">Final</option>
         </select>
       </div>
@@ -5765,18 +5766,326 @@
         //   },
         //   // more questions...
         // ],
-        // quiz17: [
-        //   {
-        //     question: "Which is the largest animal in the world?",
-        //     answers: [
-        //       { text: "Elephant", correct: false },
-        //       { text: "Blue Whale", correct: true },
-        //       { text: "Giraffe", correct: false },
-        //       { text: "Lion", correct: false },
-        //     ],
-        //   },
-        //   // more questions...
-        // ],
+        quiz17: [
+          // {
+          //   question: "Which is the largest animal in the world?",
+          //   answers: [
+          //     { text: "Elephant", correct: false },
+          //     { text: "Blue Whale", correct: true },
+          //     { text: "Giraffe", correct: false },
+          //     { text: "Lion", correct: false },
+          //   ],
+          // },
+          {
+            question: "What is the annual precipitation in deserts?",
+            answers: [
+              { text: "< 5 cm", correct: false },
+              { text: "< 10 cm", correct: false },
+              { text: "< 25 cm", correct: true },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "What is the percentage of the land surface covered by arid regions?",
+            answers: [
+              { text: "~ 1 %", correct: false },
+              { text: "~ 5 %", correct: false },
+              { text: "~ 25 %", correct: true },
+              { text: "~ 40 %", correct: false },
+            ],
+          },
+          {
+            question:
+              "The definition of a desert depends on its aridity, not on its temperature.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question: "Where can we find Cold Deserts?",
+            answers: [
+              { text: "At high latitudes, high elevations", correct: false },
+              { text: "At low latitudes, low elevations", correct: false },
+              { text: "In lands adjacent to cold oceans", correct: false },
+              { text: "Both a and c", correct: true },
+              { text: "Both b and c", correct: false },
+            ],
+          },
+          {
+            question: "Where can we find Hot Deserts?",
+            answers: [
+              {
+                text: "In regions distant from the cold oceans",
+                correct: false,
+              },
+              { text: "At high latitudes, high elevations", correct: false },
+              { text: "At low latitudes, low elevations", correct: false },
+              { text: "Both b and c", correct: false },
+              { text: "Both a and c", correct: true },
+            ],
+          },
+          {
+            question: "Which of the following deserts are Subtropical Deserts?",
+            answers: [
+              { text: "The Sahara Desert", correct: false },
+              { text: "The Atacama Desert", correct: false },
+              { text: "The Kalahari Desert", correct: false },
+              { text: "Both a and c", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "What is the major mechanism for the formation of Subtropical Deserts?",
+            answers: [
+              {
+                text: "The dry air that convectively flows downward absorbs waters as it sinks",
+                correct: true,
+              },
+              {
+                text: "The air at the subtropical areas is hot and humid",
+                correct: false,
+              },
+              {
+                text: "As air masses move across a continent, they lose moisture by dropping rain",
+                correct: false,
+              },
+              { text: "None of the above", correct: false },
+            ],
+          },
+          {
+            question:
+              "Deserts are formed in rain shadows after the following step(s):",
+            answers: [
+              {
+                text: "As air flows over the sea toward a coastal mountain range, the air must rise, resulting in rain on the seaward flank of the mountains",
+                correct: false,
+              },
+              {
+                text: "When the air finally reaches the inland side of the mountain, it has lost all its moisture and can no longer provide rain.",
+                correct: false,
+              },
+              {
+                text: "When the air finally reaches the inland side of the mountain, it rises due to the high elevation, and therefore expands and cools.",
+                correct: false,
+              },
+              { text: "Both a and c", correct: false },
+              { text: "Both a and b", correct: true },
+            ],
+          },
+          {
+            question:
+              "Which of the following deserts is formed along cold ocean currents?",
+            answers: [
+              { text: "The Sahara Desert", correct: false },
+              {
+                text: "East of the Cascade Mountains in the state of Washington",
+                correct: false,
+              },
+              { text: "The Atacama Desert", correct: true },
+              { text: "The Kalahari Desert", correct: false },
+            ],
+          },
+          {
+            question: "Which desert is the driest place on Earth?",
+            answers: [
+              { text: "The Sahara Desert", correct: false },
+              { text: "The Gobi Desert", correct: false },
+              { text: "The Atacama Desert", correct: true },
+              { text: "The Kalahari Desert", correct: false },
+            ],
+          },
+          {
+            question:
+              "The Gobi Desert located at the central Asia belongs to what type of deserts?",
+            answers: [
+              {
+                text: "A coastal desert formed along cold ocean currents",
+                correct: false,
+              },
+              {
+                text: "A desert formed in the interiors of continents",
+                correct: true,
+              },
+              { text: "A desert formed in rain shadows", correct: false },
+              { text: "A subtropical desert", correct: false },
+            ],
+          },
+          {
+            question:
+              "Only a few places in Earth’s Polar Regions can be classified as deserts, because the ice contains solid water.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "The process that joints (natural fractures) split rock into piece is called:",
+            answers: [
+              { text: "physical weathering", correct: true },
+              { text: "chemical weathering", correct: false },
+              { text: "biological weathering", correct: false },
+              { text: "geological weathering", correct: false },
+            ],
+          },
+          {
+            question:
+              "Chemical weathering happens faster in deserts than in tropical climates, because it is typically drier and hotter in the deserts.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "The dark, rusty brown coating of oxide minerals that covers the surface of rocks in desert is called:",
+            answers: [
+              { text: "desert dust", correct: false },
+              { text: "ventifact", correct: false },
+              { text: "desert faceted rock", correct: false },
+              { text: "desert varnish", correct: true },
+            ],
+          },
+          {
+            question:
+              "Because of the lack of plant cover in deserts, variations in bedrock and soil color in deserts visually stand out.",
+            answers: [
+              { text: "True", correct: true },
+              { text: "False", correct: false },
+            ],
+          },
+          {
+            question:
+              "Water generally causes less erosion than does the wind in most deserts.",
+            answers: [
+              { text: "True", correct: false },
+              { text: "False", correct: true },
+            ],
+          },
+          {
+            question:
+              "Dry stream channels in deserts of southwestern North America are called:",
+            answers: [
+              { text: "dry washes", correct: false },
+              { text: "arroyos", correct: false },
+              { text: "dry valleys", correct: false },
+              { text: "both a and b", correct: true },
+            ],
+          },
+          {
+            question: "In deserts, wind can carry sediment as what form?",
+            answers: [
+              { text: "suspended load", correct: false },
+              { text: "dissolved load", correct: false },
+              { text: "surface load", correct: false },
+              { text: "both a and b", correct: false },
+              { text: "both a and c", correct: true },
+            ],
+          },
+          {
+            question:
+              "Particularly strong winds can generate a dramatic dust storm, which is consisting of:",
+            answers: [
+              { text: "suspended load", correct: true },
+              { text: "dissolved load", correct: false },
+              { text: "surface load", correct: false },
+              { text: "both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "The coarse sediment left behind in a desert after wind erosion removes the finer sediment is called:",
+            answers: [
+              { text: "ventifact", correct: false },
+              { text: "lag deposit", correct: true },
+              { text: "desert faceted rock", correct: false },
+              { text: "desert varnish", correct: false },
+            ],
+          },
+          {
+            question:
+              "The desert rock whose surface has been faceted by the wind is called:",
+            answers: [
+              { text: "lag deposit", correct: false },
+              { text: "desert surface load", correct: false },
+              { text: "ventifact", correct: true },
+              { text: "desert varnish", correct: false },
+            ],
+          },
+          {
+            question: "What kind of process in Deserts is called Deflation?",
+            answers: [
+              { text: "Wind erosion lowers the land surface", correct: true },
+              {
+                text: "Windblown sand abrades the face of a rock",
+                correct: false,
+              },
+              {
+                text: "Wind blows away finer sediment, leaving behind a layer of coarse grains",
+                correct: false,
+              },
+              {
+                text: "Water flows across the desert surface and carries the loose sediment",
+                correct: false,
+              },
+            ],
+          },
+          {
+            question:
+              "Sediment carried by water and wind in deserts accumulates in the following landforms:",
+            answers: [
+              { text: "Talus aprons", correct: false },
+              { text: "Playas and Salt Lakes", correct: false },
+              { text: "Dunes", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "Both a and c", correct: false },
+            ],
+          },
+          {
+            question:
+              "Which of the following landscapes can be found in deserts?",
+            answers: [
+              { text: "Rocky cliffs and mesas", correct: false },
+              { text: "Desert pavement", correct: false },
+              { text: "Stony plains and pediments", correct: false },
+              { text: "All of the above", correct: true },
+              { text: "Both a and b", correct: false },
+            ],
+          },
+          {
+            question:
+              "The large, flat-topped hill with a surface area of several square km in an arid region is called:",
+            answers: [
+              { text: "Butte", correct: false },
+              { text: "Mesa", correct: true },
+              { text: "Chimney", correct: false },
+              { text: "Talus aprons", correct: false },
+            ],
+          },
+          {
+            question:
+              "The mosaic-like stone surface forming the ground in a desert is called:",
+            answers: [
+              { text: "desert pavement", correct: true },
+              { text: "desert pediment", correct: false },
+              { text: "inselberg", correct: false },
+              { text: "alluvium", correct: false },
+            ],
+          },
+          {
+            question:
+              "Dunes formed when strong winds break through transverse dunes to make new dunes whose ends point upwind are called:",
+            answers: [
+              { text: "longitudinal dunes", correct: false },
+              { text: "star dunes", correct: false },
+              { text: "barchan dunes", correct: false },
+              { text: "parabolic dunes", correct: true },
+            ],
+          },
+        ],
         // quiz18: [
         //   {
         //     question: "Which is the largest animal in the world?",
